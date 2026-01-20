@@ -1,20 +1,27 @@
-<?php  
-    include "../controllers/buscar.php";
-
+<?php 
+    include "../controllers/mensajes.php";
+    date_default_timezone_set('Europe/Madrid');
+    
     $usuario_actual = $_SESSION["username"];
     
-    //Aqui obtengo el id del usuario en sesion
+    // A continuacion obtengo los ids del usuario en sesion y con el que quiero hablar
     $emisor_id = obtenerIdPorUsername($conexion, $usuario_actual);
+    $receptor_id = $_GET['receptor_id']; // ID del usuario con el que se chatea
+    
+    // Obtener mensajes
+    $mensajes = mostrarMensajesEntreUsuarios($conexion, $emisor_id, $receptor_id);
+    
+    // Obtener información del receptor
+    $receptor_info = obtenerUsuarioPorId($conexion, $receptor_id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mensajes</title>
+    <title>Chat con <?php echo $receptor_info['username']; ?></title>
     <link rel='stylesheet' type='text/css' media='screen' href='../sidebar.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='../mensajes.css'>
-    <script src="../scripts/usuario.js"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='../chat.css'>
 </head>
 <body>
     <div class="sidebar">
@@ -52,21 +59,27 @@
             <p>Cerrar Sesión</p>
         </button>
     </div>
-    <div class="mensajes">
-        <input type="text" id="mensajes__buscador" name="buscar" placeholder="Buscar por nombre de usuario">
-        <p>Mensajes</p>
-        <?php  
-            foreach($resultado as $usuarios)
-            {
-                $receptor_id = $usuarios['id']; 
-                
-                echo "<button class='mensajes__usuarios' 
-                    onclick=\"window.location.href='ViewChat.php?receptor_id=" . $receptor_id . "'\">";
-                echo "<img src='" . $usuarios['avatar_url'] . "'>";
-                echo "<p>" . $usuarios["username"] . "</p>";
-                echo "</button>";
-            }  
-        ?>
+    
+    <div class="chat-container">
+        <div class="chat-header">
+            <img src="<?php echo $receptor_info['avatar_url']; ?>" class="avatar">
+            <h2><?php echo $receptor_info['username']; ?></h2>
+        </div>
+        
+        <div class="chat-messages">
+            <?php foreach($mensajes as $mensaje): ?>
+                <div class="message <?php echo $mensaje['emisor_id'] == $emisor_id ? 'sent' : 'received'; ?>">
+                    <p><?php echo htmlspecialchars($mensaje['contenido']); ?></p>
+                    <span class="time"><?php echo date('H:i', strtotime($mensaje['fecha_envio'])); ?></span>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        
+        <form method="POST" action="../controllers/enviarMensaje.php" class="chat-input">
+            <input type="hidden" name="receptor_id" value="<?php echo $receptor_id; ?>">
+            <input type="text" name="contenido" placeholder="Escribe un mensaje..." required>
+            <button type="submit">Enviar</button>
+        </form>
     </div>
 </body>
 </html>

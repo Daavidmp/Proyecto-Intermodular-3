@@ -15,9 +15,7 @@
         $sql = "INSERT INTO usuarios (username, email, contrasenya) VALUES (:username, :email, :contrasenya)";
         $stmt = $conexion->prepare($sql);
     
-        $stmt->execute([
-            ':username' => $username,
-            ':email' => $email,
+        $stmt->execute([':username' => $username, ':email' => $email,
             ':contrasenya' => $contrasenya
         ]);
             
@@ -92,5 +90,16 @@
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
 
         return $resultado;
+    }
+
+    function obtenerIdPorUsername($conexion, $username)
+    {
+        $sql = "SELECT id FROM usuarios WHERE username = :username";
+        $stmt = $conexion->prepare($sql);
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt->execute();
+        
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $resultado ? $resultado['id'] : null;
     }
 ?>

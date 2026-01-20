@@ -34,7 +34,7 @@
                 <img src="https://cdn-icons-png.flaticon.com/128/25/25694.png">
                 <p>Inicio</p>
             </button>
-            <button class="sidebar__buscar" id="btn__explorar">
+            <button class="sidebar__buscar" id="btn__explorar" onclick="window.location.href='formExplorar.php'">
                 <img src="https://cdn-icons-png.flaticon.com/512/2319/2319177.png">
                 <p>Explorar</p>
             </button>
@@ -42,11 +42,11 @@
                 <img src="https://cdn-icons-png.flaticon.com/128/4991/4991422.png">
                 <p>Notificaciones</p>
             </button>
-            <button class="sidebar__mensajes">
+            <button class="sidebar__mensajes" onclick="window.location.href='ViewMensajes.php'">
                 <img src="https://cdn-icons-png.flaticon.com/128/520/520648.png">
                 <p>Mensajes</p>
             </button>
-            <button class="sidebar__perfil" id="btn__perfil">
+            <button class="sidebar__perfil" id="btn__perfil" onclick="window.location.href='formMenu.php'">
                 <img src="https://cdn-icons-png.flaticon.com/128/9308/9308015.png">
                 <p>Perfil</p>
             </button>

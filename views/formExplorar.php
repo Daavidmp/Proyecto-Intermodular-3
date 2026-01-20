@@ -32,7 +32,7 @@
             <img src="https://cdn-icons-png.flaticon.com/128/25/25694.png">
             <p>Inicio</p>
         </button>
-        <button class="sidebar__buscar" id="btn__explorar">
+        <button class="sidebar__buscar" id="btn__explorar" onclick="window.location.href='formExplorar.php'">
             <img src="https://cdn-icons-png.flaticon.com/512/2319/2319177.png">
             <p>Explorar</p>
         </button>
@@ -40,11 +40,11 @@
             <img src="https://cdn-icons-png.flaticon.com/128/4991/4991422.png">
             <p>Notificaciones</p>
         </button>
-        <button class="sidebar__mensajes">
+        <button class="sidebar__mensajes" onclick="window.location.href='ViewMensajes.php'">
             <img src="https://cdn-icons-png.flaticon.com/128/520/520648.png">
             <p>Mensajes</p>
         </button>
-        <button class="sidebar__perfil" id="btn__perfil">
+        <button class="sidebar__perfil" id="btn__perfil" onclick="window.location.href='formMenu.php'">
             <img src="https://cdn-icons-png.flaticon.com/128/9308/9308015.png">
             <p>Perfil</p>
         </button>
@@ -69,29 +69,29 @@
         <!-- LOS USUARIOS DEBEN ESTAR DENTRO DE .explorar -->
         <div class="explorar__usuarios" id="lista-usuarios">
             <?php 
-            if(empty($resultado)) {
-                echo "<p class='no-resultados'>No hay usuarios para mostrar</p>";
-            } else {
-                foreach($resultado as $usuario) 
+                if(empty($resultado)) 
                 {
-                    echo "<div class='usuario-item'>";
-                    echo "<button class='explorar__usuarios__boton' onclick=\"verUsuario('" . htmlspecialchars($usuario['username']) . "')\">";
-                    echo "<img src='" . (!empty($usuario['avatar_url']) ? htmlspecialchars($usuario['avatar_url']) : '../img/iconodefault.jpg') . "' 
-                            alt='" . htmlspecialchars($usuario['username']) . "'
-                            onerror=\"this.src='../img/iconodefault.jpg'\">";
-                    echo "</button>"; 
-                    echo "<div class='explorar__usuarios__info'>
-                        <p class='nombre-usuario'>" . htmlspecialchars($usuario["username"]) . "</p>
-                        <p>@" . htmlspecialchars($usuario["username"]) . "</p>
-                    </div>";
-                    echo "</div>";
+                    echo "<p class='no-resultados'>No hay usuarios para mostrar</p>";
+                } 
+                else 
+                {
+                    foreach($resultado as $usuario) 
+                    {
+                        echo "<div class='usuario-item'>";
+                        echo "<button class='explorar__usuarios__boton' onclick=\"verUsuario('" . $usuario['username'] . "')\">";
+                        echo "<img src='" . (!empty($usuario['avatar_url']) ? $usuario['avatar_url'] : '../img/iconodefault.jpg') . "' 
+                        alt='" . $usuario['username'] . "'onerror=\"this.src='../img/iconodefault.jpg'\">";
+                        echo "</button>"; 
+                        echo "<div class='explorar__usuarios__info'><p class='nombre-usuario'>" . $usuario["username"] . "</p>
+                            <p>@" . $usuario["username"] . "</p>
+                        </div>";
+                        echo "</div>";
+                    }
                 }
-            }
             ?>
         </div>
     </div>
     
-    <!-- Incluir el script de usuario.js AL FINAL del body -->
     <script src="../scripts/usuario.js"></script>
 </body>
 </html>

@@ -72,7 +72,7 @@
                 <img src="https://cdn-icons-png.flaticon.com/128/4991/4991422.png">
                 <p>Notificaciones</p>
             </button>
-            <button class="sidebar__mensajes">
+            <button class="sidebar__mensajes" onclick="window.location.href='ViewMensajes.php'">
                 <img src="https://cdn-icons-png.flaticon.com/128/520/520648.png">
                 <p>Mensajes</p>
             </button>
