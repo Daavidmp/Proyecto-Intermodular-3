@@ -1,0 +1,96 @@
+<?php 
+    function obtenerDatosVerificacion($conexion)
+    {
+        $sql = "SELECT username, email, contrasenya FROM usuarios";
+        $stmt = $conexion->prepare($sql);
+        $stmt->execute();
+
+        $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $usuarios;
+    }
+
+    function crearUsuario($conexion, $username, $email, $contrasenya) 
+    {
+        $sql = "INSERT INTO usuarios (username, email, contrasenya) VALUES (:username, :email, :contrasenya)";
+        $stmt = $conexion->prepare($sql);
+    
+        $stmt->execute([
+            ':username' => $username,
+            ':email' => $email,
+            ':contrasenya' => $contrasenya
+        ]);
+            
+        echo "Usuario insertado correctamente.<br>";
+        $_SESSION["username"] = $username;
+
+        header("Location: ../views/formMenu.php");
+        exit;
+    }
+
+    function listarUsuarios($conexion)
+    {
+        $sql = "SELECT * FROM usuarios ORDER BY username";
+        $stmt = $conexion->query($sql);
+
+        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $resultado;
+    }
+
+    function obtenerUsuarioContrasenya($conexion)
+    {
+        $sql = "SELECT username, contrasenya FROM usuarios";
+        $stmt = $conexion->prepare($sql);
+        $stmt->execute();
+
+        $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $usuarios;
+    }
+
+    function obtenerDatos($conexion)
+    {
+        $usuario = $_SESSION["username"];
+
+        $sql = "SELECT id, biografia, avatar_url, ubicacion, fecha, enlace_spoty FROM usuarios WHERE username = :usuario";
+        $stmt = $conexion->prepare($sql);
+
+        $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
+
+        $stmt->execute();
+
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $resultado;
+    }
+
+    //Metodos para obtencion de usuario que no es el mio
+
+    function obtenerDatosUsuario($conexion, $usuario)
+    {
+        $sql = "SELECT * FROM usuarios WHERE username = :usuario"; 
+
+        $stmt = $conexion->prepare($sql);
+        $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
+
+        $stmt->execute();
+
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $resultado;
+    }
+
+    function obtenerUsuarioPorId($conexion, $id)
+    {
+        $sql = "SELECT * FROM usuarios WHERE id = :id";
+
+        $stmt = $conexion->prepare($sql);
+        $stmt->bindParam(":id", $id, PDO::PARAM_STR);
+
+        $stmt->execute();
+
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $resultado;
+    }
+?>

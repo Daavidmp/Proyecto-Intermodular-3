@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+.sidebar {
+    width: 275px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #000000;
+    border-right: 1px solid #2f3336;
+    padding: 20px 15px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar__inicio, .sidebar__buscar, .sidebar__notificaciones, 
+.sidebar__mensajes, .sidebar__perfil, .sidebar__musica, 
+.sidebar__vivo, .cerrar__sesion {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    border-radius: 30px;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+.sidebar__inicio:hover, .sidebar__buscar:hover, .sidebar__notificaciones:hover,
+.sidebar__mensajes:hover, .sidebar__perfil:hover, .sidebar__musica:hover,
+.sidebar__vivo:hover, .cerrar__sesion:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar__inicio img, .sidebar__buscar img, .sidebar__notificaciones img,
+.sidebar__mensajes img, .sidebar__perfil img, .sidebar__musica img,
+.sidebar__vivo img, .cerrar__sesion img {
+    height: 26px;
+    width: 26px;
+    filter: brightness(0) invert(1);
+}
+
+.sidebar__inicio p, .sidebar__buscar p, .sidebar__notificaciones p,
+.sidebar__mensajes p, .sidebar__perfil p, .sidebar__musica p,
+.sidebar__vivo p, .cerrar__sesion p {
+    font-size: 20px;
+    font-weight: 500;
+    padding-bottom: 0;
+}
+
+.titulo {
+    background: linear-gradient(90deg, #fc204c, #9c01c0, #1e74f5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Poppins", "Montserrat", sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    padding: 20px 15px;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
