@@ -92,6 +92,7 @@
         return $resultado;
     }
 
+    //metodo para obtener el id por el nombre del usuario
     function obtenerIdPorUsername($conexion, $username)
     {
         $sql = "SELECT id FROM usuarios WHERE username = :username";
@@ -101,5 +102,11 @@
         
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
         return $resultado ? $resultado['id'] : null;
+    }
+
+    //metodo para obtener fecha actual
+    function obtenerTiempoActual()
+    {
+        
     }
 ?>

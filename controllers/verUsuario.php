@@ -5,5 +5,4 @@
     $conexion = conexion();
 
     include "../models/TablaUsuario.php";
-    //$datosUsuario = obtenerDatosUsuario($conexion, )
 ?>

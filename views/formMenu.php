@@ -11,6 +11,7 @@
     include "../controllers/menu.php";
     include "../models/TablaPosts.php";
     include "../models/TablaSeguidores.php";
+    include "../controllers/post.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -114,6 +115,18 @@
                 <p class="main__content__section6__espacio"><img src="https://cdn-icons-png.flaticon.com/128/651/651717.png"><?php echo "<b>" . obtenerPostsTotales($conexion) . "</b>" . " Posts"?></p>
                 <p><?php echo "<b>" . obtenerSiguiendo($conexion) . "</b>" . " Siguiendo"?></p>
                 <p><?php echo "<b>" . obtenerSeguidores($conexion) . "</b>" ." Seguidores"?></p>
+                <button onclick="window.location.href='ViewCrearPosts.php'">Añadir Post</button>
+            </div>
+            <div class="main__content__section7">
+                <h1>Posts</h1>
+                <?php foreach($postDeUsuario as $posts):?>
+                <div class="main__content__section7__post">
+                    <img src="<?php echo $_SESSION["avatar_url"];?>">
+                    <p><?php echo $_SESSION["username"]?></p>
+                    <p><?php echo $posts["contenido"]?></p>
+                    <a href="<?php echo $posts["music_link"]?>">Enlace a musica</a>
+                </div>
+                <?php endforeach;?>    
             </div>
             <hr>
         </div>

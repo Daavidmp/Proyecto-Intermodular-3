@@ -1,20 +1,14 @@
-<?php  
-    include "../controllers/buscar.php";
+<?php 
 
-    $usuario_actual = $_SESSION["username"];
-    
-    //Aqui obtengo el id del usuario en sesion
-    $emisor_id = obtenerIdPorUsername($conexion, $usuario_actual);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mensajes</title>
+    <title>Publicar Posts</title>
     <link rel='stylesheet' type='text/css' media='screen' href='../sidebar.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='../mensajes.css'>
-    <script src="../scripts/usuario.js"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='../posts.css'>
 </head>
 <body>
     <div class="sidebar">
@@ -52,21 +46,18 @@
             <p>Cerrar Sesión</p>
         </button>
     </div>
-    <div class="mensajes">
-        <input type="text" id="buscador" name="buscar" placeholder="Buscar por nombre de usuario">
-        <p>Mensajes</p>
-        <?php  
-            foreach($resultado as $usuarios)
-            {
-                $receptor_id = $usuarios['id']; 
-                
-                echo "<button class='mensajes__usuarios' 
-                    onclick=\"window.location.href='ViewChat.php?receptor_id=" . $receptor_id . "'\">";
-                echo "<img src='" . $usuarios['avatar_url'] . "'>";
-                echo "<p>" . $usuarios["username"] . "</p>";
-                echo "</button>";
-            }  
-        ?>
+    <div class="form-container">
+        <form action="../controllers/post.php" method="post">
+            <h1 class="form__titulo">Crear Nuevo Post</h1>
+            
+            <label for="contenido" class="form__label">Contenido del post</label>
+            <textarea name="contenido" id="contenido" class="form__input" placeholder="Escribe el contenido de tu post..."></textarea>
+
+            <label for="music_link" class="form__label">Link a la canción</label>
+            <input type="text" name="music_link" id="music_link" class="form__input" placeholder="Pega el enlace de la canción...">
+            
+            <button id="btn_posts">Crear Post</button>
+        </form>
     </div>
 </body>
 </html>

@@ -29,7 +29,7 @@ body {
     letter-spacing: -0.5px;
 }
 
-#mensajes__buscador {
+#buscador {
     width: 100%;
     margin-top: 35px;
     padding: 16px 24px;
@@ -44,12 +44,12 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-#mensajes__buscador:focus {
+#buscador:focus {
     border-color: #1d9bf0;
     background-color: rgba(29, 155, 240, 0.05);
 }
 
-#mensajes__buscador::placeholder {
+#buscador::placeholder {
     color: #8b8b8b;
     font-size: 16px;
 }

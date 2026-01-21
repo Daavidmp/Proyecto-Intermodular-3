@@ -1,0 +1,328 @@
+/* posts.css - Estilos específicos para el formulario de posts */
+
+/* Variables para mantener consistencia */
+:root {
+    --primary-gradient: linear-gradient(90deg, #fc204c, #9c01c0, #1e74f5);
+    --hover-gradient: linear-gradient(90deg, #1e74f5, #9c01c0, #fc204c);
+    --dark-bg: #000000;
+    --card-bg: #1a1a1a;
+    --border-color: #2f3336;
+    --text-muted: #8b8b8b;
+    --text-light: #ffffff;
+    --focus-color: #9c01c0;
+    --shadow-color: rgba(156, 1, 192, 0.3);
+}
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    font-family: "Poppins", "Montserrat", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    overflow-x: hidden;
+}
+
+/* Contenedor principal del formulario */
+.form-container {
+    margin-left: 300px; /* Igual al ancho del sidebar */
+    padding: 50px;
+    min-height: 100vh;
+    background-color: var(--dark-bg);
+    width: calc(100% - 300px); /* 100% menos el ancho del sidebar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilos del formulario */
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--card-bg);
+    padding: 50px;
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Título del formulario */
+.form__titulo {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 40px;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Estilos para las etiquetas */
+.form__label {
+    display: block;
+    padding-bottom: 10px;
+    padding-top: 25px;
+    color: var(--text-muted);
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.form__label:first-of-type {
+    padding-top: 0;
+}
+
+.form__label:hover {
+    color: var(--text-light);
+}
+
+/* Estilos para los inputs */
+.form__input {
+    padding: 18px 20px;
+    border-radius: 15px;
+    font-size: 18px;
+    border: 2px solid var(--border-color);
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    width: 100%;
+    transition: all 0.3s ease;
+    font-family: "Poppins", "Montserrat", sans-serif;
+}
+
+.form__input::placeholder {
+    color: #4a4a4a;
+    font-size: 16px;
+}
+
+.form__input:focus {
+    border-color: var(--focus-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(156, 1, 192, 0.2);
+    transform: translateY(-1px);
+}
+
+.form__input:hover {
+    border-color: #3d4144;
+}
+
+/* Estilos para el botón */
+#btn_posts {
+    margin-top: 50px;
+    padding: 18px 0;
+    font-size: 20px;
+    border-radius: 15px;
+    background: var(--primary-gradient);
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    font-family: "Poppins", "Montserrat", sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+#btn_posts::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--hover-gradient);
+    transition: left 0.3s ease;
+}
+
+#btn_posts:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px var(--shadow-color);
+}
+
+#btn_posts:hover::before {
+    left: 0;
+}
+
+#btn_posts span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Efecto de pulsación en el botón */
+#btn_posts:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 10px var(--shadow-color);
+}
+
+/* Responsive para pantallas más pequeñas */
+@media (max-width: 1200px) {
+    .form-container {
+        margin-left: 250px;
+        width: calc(100% - 250px);
+        padding: 40px;
+    }
+    
+    .form-container form {
+        padding: 40px;
+    }
+    
+    .form__titulo {
+        font-size: 38px;
+    }
+}
+
+@media (max-width: 992px) {
+    .form-container {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+        padding: 30px;
+    }
+    
+    .form-container form {
+        padding: 30px;
+        border-radius: 25px;
+    }
+    
+    .form__titulo {
+        font-size: 34px;
+        margin-bottom: 30px;
+    }
+    
+    .form__input {
+        padding: 16px;
+        font-size: 16px;
+    }
+    
+    #btn_posts {
+        padding: 16px 0;
+        font-size: 18px;
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    
+    .form-container {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+        min-height: calc(100vh - 70px); /* Ajuste para sidebar móvil si aplica */
+    }
+    
+    .form-container form {
+        padding: 25px;
+        border-radius: 20px;
+        margin-top: 20px;
+    }
+    
+    .form__titulo {
+        font-size: 28px;
+        margin-bottom: 25px;
+    }
+    
+    .form__label {
+        padding-top: 20px;
+        font-size: 15px;
+    }
+    
+    .form__input {
+        padding: 14px;
+        font-size: 15px;
+        border-radius: 12px;
+    }
+    
+    #btn_posts {
+        padding: 14px 0;
+        font-size: 16px;
+        margin-top: 35px;
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        padding: 15px;
+    }
+    
+    .form-container form {
+        padding: 20px;
+    }
+    
+    .form__titulo {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .form__label {
+        padding-top: 15px;
+        padding-bottom: 8px;
+        font-size: 14px;
+    }
+    
+    .form__input {
+        padding: 12px;
+        font-size: 14px;
+    }
+    
+    .form__input::placeholder {
+        font-size: 14px;
+    }
+    
+    #btn_posts {
+        padding: 12px 0;
+        font-size: 15px;
+        margin-top: 30px;
+    }
+}
+
+/* Animación de entrada para el formulario */
+@keyframes formFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-container form {
+    animation: formFadeIn 0.5s ease-out;
+}
+
+/* Estilos para mensajes de validación (opcional) */
+.form__message {
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-size: 14px;
+    display: none;
+}
+
+.form__message.error {
+    background-color: rgba(252, 32, 76, 0.1);
+    border: 1px solid #fc204c;
+    color: #fc204c;
+    display: block;
+}
+
+.form__message.success {
+    background-color: rgba(30, 116, 245, 0.1);
+    border: 1px solid #1e74f5;
+    color: #1e74f5;
+    display: block;
+}
