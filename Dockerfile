@@ -1,20 +1,25 @@
-# Dockerfile
-FROM php:8.1-apache
+# Dockerfile para PHP CLI (servidor built-in)
+FROM php:8.2-cli
 
-# Instalar extensiones de PHP necesarias
-RUN docker-php-ext-install pdo pdo_mysql mysqli
+# Instalar PostgreSQL
+RUN apt-get update && apt-get install -y libpq-dev \
+    && docker-php-ext-install pdo pdo_pgsql
 
-# Habilitar mod_rewrite para Apache
-RUN a2enmod rewrite
+# Directorio de trabajo
+WORKDIR /app
 
-# Copiar los archivos del proyecto
-COPY . /var/www/html/
+# Copiar proyecto
+COPY . .
 
-# Configurar permisos
-RUN chown -R www-data:www-data /var/www/html
+# Crear usuario no-root para seguridad
+RUN useradd -m -u 1000 phpuser \
+    && chown -R phpuser:phpuser /app
 
-# Puerto expuesto
-EXPOSE 80
+# Cambiar a usuario no-root
+USER phpuser
 
-# Comando de inicio
-CMD ["apache2-foreground"]
+# Puerto
+EXPOSE 8000
+
+# Comando con servidor PHP integrado
+CMD ["php", "-S", "0.0.0.0:8000"]
