@@ -19,7 +19,7 @@
 <body>
     <div class="sidebar">
         <h1 class="titulo">MRTN</h1>
-        <button class="sidebar__inicio">
+        <button class="sidebar__inicio" onclick="window.location.href='ViewPosts.php'">
             <img src="https://cdn-icons-png.flaticon.com/128/25/25694.png">
             <p>Inicio</p>
         </button>

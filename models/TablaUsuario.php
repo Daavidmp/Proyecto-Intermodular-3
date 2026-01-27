@@ -100,13 +100,7 @@
         $stmt->bindParam(':username', $username, PDO::PARAM_STR);
         $stmt->execute();
         
-        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $resultado ? $resultado['id'] : null;
-    }
-
-    //metodo para obtener fecha actual
-    function obtenerTiempoActual()
-    {
-        
+        $id = $stmt->fetchColumn();
+        return $id;
     }
 ?>

@@ -13,7 +13,7 @@
 <body>
     <div class="sidebar">
         <h1 class="titulo">MRTN</h1>
-        <button class="sidebar__inicio">
+        <button class="sidebar__inicio" onclick="window.location.href='ViewPosts.php'">
             <img src="https://cdn-icons-png.flaticon.com/128/25/25694.png">
             <p>Inicio</p>
         </button>
@@ -52,6 +52,9 @@
             
             <label for="contenido" class="form__label">Contenido del post</label>
             <textarea name="contenido" id="contenido" class="form__input" placeholder="Escribe el contenido de tu post..."></textarea>
+
+            <label for="image_link" class="form__label">Imagen</label>
+            <input type="text" name="image_link" class="form__input">
 
             <label for="music_link" class="form__label">Link a la canción</label>
             <input type="text" name="music_link" id="music_link" class="form__input" placeholder="Pega el enlace de la canción...">

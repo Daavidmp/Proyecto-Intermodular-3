@@ -1,10 +1,12 @@
 <?php 
     include "../models/conexionDatabase.php";
     require_once "../models/TablaUsuario.php";
+    require_once "../models/TablaPosts.php";
 
     $conexion = conexion();
 
     $resultado = obtenerDatos($conexion);
+    $postsTotales = obtenerPostsTotalesUsuario($conexion, $_SESSION["username"]);
 
     if($resultado) 
     {

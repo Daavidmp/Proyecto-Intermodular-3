@@ -7,11 +7,13 @@
         exit;
     }
 
+    require_once "../controllers/menu.php";
+    require_once "../models/TablaPosts.php";
+    require_once "../models/TablaSeguidores.php";
+
     $usuario = $_SESSION["username"];
-    include "../controllers/menu.php";
-    include "../models/TablaPosts.php";
-    include "../models/TablaSeguidores.php";
-    include "../controllers/post.php";
+    $conexion = conexion();
+    $postDeMiUsuario = mostrarPostsDeUnUsuario($conexion, $usuario);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +29,7 @@
     <div class="profile">
         <div class="sidebar">
             <h1 class="titulo">MRTN</h1>
-            <button class="sidebar__inicio">
+            <button class="sidebar__inicio" onclick="window.location.href='ViewPosts.php'">
                 <img src="https://cdn-icons-png.flaticon.com/128/25/25694.png">
                 <p>Inicio</p>
             </button>
@@ -66,7 +68,7 @@
                 <img class="main__content__section1__flecha" src="../img/flecha.png">
                 <div class="profile-header-info">
                     <h1 class="profile-name"><?php echo $usuario; ?></h1>
-                    <span class="post-count"><?php echo obtenerPostsTotales($conexion) . " posts"?></span>
+                    <span class="post-count"><?php echo $postsTotales . " posts"?></span>
                 </div>
             </div>
             <div class="containers">
@@ -112,19 +114,25 @@
                 </p>
             </div>
             <div class="main__content__section6">
-                <p class="main__content__section6__espacio"><img src="https://cdn-icons-png.flaticon.com/128/651/651717.png"><?php echo "<b>" . obtenerPostsTotales($conexion) . "</b>" . " Posts"?></p>
+                <p class="main__content__section6__espacio"><img src="https://cdn-icons-png.flaticon.com/128/651/651717.png"><?php echo "<b>" . $postsTotales . "</b>" . " Posts"?></p>
                 <p><?php echo "<b>" . obtenerSiguiendo($conexion) . "</b>" . " Siguiendo"?></p>
                 <p><?php echo "<b>" . obtenerSeguidores($conexion) . "</b>" ." Seguidores"?></p>
                 <button onclick="window.location.href='ViewCrearPosts.php'">Añadir Post</button>
             </div>
             <div class="main__content__section7">
                 <h1>Posts</h1>
-                <?php foreach($postDeUsuario as $posts):?>
+                <?php foreach($postDeMiUsuario as $posts):?>
                 <div class="main__content__section7__post">
-                    <img src="<?php echo $_SESSION["avatar_url"];?>">
-                    <p><?php echo $_SESSION["username"]?></p>
-                    <p><?php echo $posts["contenido"]?></p>
-                    <a href="<?php echo $posts["music_link"]?>">Enlace a musica</a>
+                    <div class="main__content__section7__post__primer">
+                        <img src="<?php echo $_SESSION["avatar_url"];?>">
+                        <p><?php echo $_SESSION["username"]?></p>
+                    </div>
+                    <div class="main__content__section7__post__segon">
+                        <p><?php echo $posts["contenido"]?></p>
+                        <a href="<?php echo $posts["music_link"]?>">
+                            <img class="foto" src="<?php echo $posts["image_link"]?>">
+                        </a>
+                    </div>
                 </div>
                 <?php endforeach;?>    
             </div>

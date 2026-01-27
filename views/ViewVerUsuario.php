@@ -1,50 +1,5 @@
 <?php 
-    session_start();
-
-    if(!isset($_SESSION["username"])) 
-    {
-        header("Location: login.php");
-        exit;
-    }
-
-    // Obtener el usuario desde la URL
-    $usuario_perfil = isset($_GET['username']) ? $_GET['username'] : '';
-    
-    if(empty($usuario_perfil)) 
-    {
-        header("Location: ../formExplorar.php");
-        exit;
-    }
-
-    $usuario_sesion = $_SESSION["username"];
-    
-    // Incluir conexión y modelos
-    include "../models/conexionDatabase.php";
-    include "../models/TablaUsuario.php";
-    include "../models/TablaPosts.php";
-    include "../models/TablaSeguidores.php";
-    
-    $conexion = conexion();
-    
-    $datosUsuario = obtenerDatosUsuario($conexion, $usuario_perfil);
-    
-    if(!$datosUsuario) 
-    {
-        header("Location: ../formExplorar.php");
-        exit;
-    }
-    
-    $username = $datosUsuario['username'];
-    $biografia = $datosUsuario['biografia'] ?? '';
-    $avatar_url = $datosUsuario['avatar_url'] ?? '../img/iconodefault.jpg';
-    $ubicacion = $datosUsuario['ubicacion'] ?? '';
-    $fecha = $datosUsuario['fecha'] ?? date('Y-m-d');
-    $enlace_spoty = $datosUsuario['enlace_spoty'] ?? '#';
-    $usuario_id = $datosUsuario['id'];
-    
-    $posts_totales = obtenerPostsTotalesUsuario($conexion, $usuario_id);
-    $siguiendo = obtenerSiguiendoUsuario($conexion, $usuario_id);
-    $seguidores = obtenerSeguidoresUsuario($conexion, $usuario_id);
+    include "../controllers/verUsuario.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +15,7 @@
     <div class="profile">
         <div class="sidebar">
             <h1 class="titulo">MRTN</h1>
-            <button class="sidebar__inicio" onclick="window.location.href='formMenu.php'">
+            <button class="sidebar__inicio" onclick="window.location.href='ViewPosts.php'">
                 <img src="https://cdn-icons-png.flaticon.com/128/25/25694.png">
                 <p>Inicio</p>
             </button>
@@ -168,6 +123,23 @@
                 </p>
             </div>
             <hr>
+            <div class="main__content__section7">
+                <h1>Posts</h1>
+                <?php foreach($postDeOtroUsuario as $posts):?>
+                <div class="main__content__section7__post">
+                    <div class="main__content__section7__post__primer">
+                        <img src="<?php echo $avatar_url;?>">
+                        <p><?php echo $username?></p>
+                    </div>
+                    <div class="main__content__section7__post__segon">
+                        <p><?php echo $posts["contenido"]?></p>
+                        <a href="<?php echo $posts["music_link"]?>">
+                            <img class="foto" src="<?php echo $posts["image_link"]?>">
+                        </a>
+                    </div>
+                </div>
+                <?php endforeach;?>    
+            </div>
         </div>
     </div>
 </body>
