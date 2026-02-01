@@ -12,11 +12,11 @@
 
     function crearUsuario($conexion, $username, $email, $contrasenya) 
     {
-        $sql = "INSERT INTO usuarios (username, email, contrasenya) VALUES (:username, :email, :contrasenya)";
+        $sql = "INSERT INTO usuarios (username, email, contrasenya, saldo) VALUES (:username, :email, :contrasenya, :saldo)";
         $stmt = $conexion->prepare($sql);
     
         $stmt->execute([':username' => $username, ':email' => $email,
-            ':contrasenya' => $contrasenya
+            ':contrasenya' => $contrasenya, ':saldo' => 0
         ]);
             
         echo "Usuario insertado correctamente.<br>";
@@ -102,5 +102,51 @@
         
         $id = $stmt->fetchColumn();
         return $id;
+    }
+
+    function mostrarSaldo($conexion, $id)
+    {
+        $ssql = "SELECT saldo FROM usuarios WHERE id = :id";
+        $stmt = $conexion->prepare($ssql);
+        $stmt->bindParam(":id", $id, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $saldo = $stmt->fetchColumn();
+        return $saldo;
+    }
+
+    function descontarMonedas($conexion, $saldo, $id)
+    {
+        $saldoTotal = $saldo - 10;
+
+        $ssql = "UPDATE usuarios SET saldo = :saldo WHERE id = :id";
+        $stmt = $conexion->prepare($ssql);
+        $stmt->bindParam(":saldo", $saldoTotal, PDO::PARAM_INT);
+        $stmt->bindParam(":id", $id, PDO::PARAM_STR);
+
+        $stmt->execute();
+    }
+
+    function actualizarBanner($conexion, $id, $banner)
+    {
+        $ssql = "UPDATE usuarios SET banner = :banner WHERE id = :id";
+        $stmt = $conexion->prepare($ssql);
+        $stmt->bindParam(":banner", $banner, PDO::PARAM_STR);
+        $stmt->bindParam(":id", $id, PDO::PARAM_STR);
+
+        $stmt->execute();
+    }
+
+    function obtenerBannerDeMiUsuario($conexion, $id)
+    {
+        $ssql = "SELECT u.banner, g.rareza FROM usuarios u INNER JOIN gacha_obtenidos g ON u.id = g.usuario_id AND u.banner = g.nombre_imagen
+        WHERE u.id = :id";
+
+        $stmt = $conexion->prepare($ssql);
+        $stmt->bindParam(":id", $id, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $banner = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $banner;
     }
 ?>

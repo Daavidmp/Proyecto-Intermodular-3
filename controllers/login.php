@@ -16,8 +16,9 @@
         {
             if($username == $u["username"] && $contrasenya == $u["contrasenya"])
             {
-                header("Location: ../views/formMenu.php");
                 $_SESSION["username"] = $username;
+                $_SESSION["id"] = obtenerIdPorUsername($conexion, $username);
+                header("Location: ../views/formMenu.php");
                 exit;
             }
         }

@@ -33,6 +33,6 @@
         $postDeOtroUsuario = mostrarPostsDeUnUsuario($conexion, $_GET["username"]);
     }
 
-    // 4. Obtener todos los posts (Para el menu)
+    // Para obtener todos los posts
     $posts = mostrarPosts($conexion);
 ?>

@@ -59,4 +59,25 @@
         
         return $resultado['total'] ?? 0;
     }
+
+    function seguirUsuario($conexion, $seguidor_id, $receptor_id)
+    {
+        $ssql = "INSERT INTO seguidores (seguidor_id, receptor_id) VALUES (:seguidor_id, :receptor_id)";
+        $stmt = $conexion->prepare($ssql);
+        $stmt->bindParam(":seguidor_id", $seguidor_id, PDO::PARAM_STR);
+        $stmt->bindParam(":receptor_id", $receptor_id, PDO::PARAM_STR);
+        
+        return $stmt->execute();
+    }
+
+    function esSeguidor($conexion, $receptor_id, $seguidor_id)
+    {
+        $ssql = "SELECT COUNT(*) FROM seguidores WHERE receptor_id = :receptor_id AND seguidor_id = :seguidor_id";
+        $stmt = $conexion->prepare($ssql);
+        $stmt->bindParam(":seguidor_id", $seguidor_id, PDO::PARAM_STR);
+        $stmt->bindParam(":receptor_id", $receptor_id, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchColumn() > 0;
+    }
 ?>

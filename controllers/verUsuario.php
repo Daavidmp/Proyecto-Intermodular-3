@@ -7,6 +7,44 @@
         exit;
     }
 
+    if ($_SERVER["REQUEST_METHOD"] === "POST")
+    {
+        if(isset($_POST["accion"]) && $_POST["accion"] == "seguir")
+        {
+            if(isset($_POST["username_a_seguir"]))
+            {
+                require_once "../models/TablaSeguidores.php";
+                require_once "../models/TablaUsuario.php";
+                include "../models/conexionDatabase.php";
+                
+                $conexion = conexion();
+
+                $receptor_id = obtenerIdPorUsername($conexion, $_POST["username_a_seguir"]);
+
+                if($receptor_id && isset($_SESSION["id"])) 
+                {
+                    $resultado = seguirUsuario($conexion, $receptor_id, $_SESSION["id"]);
+                }
+            }
+
+            if($resultado)
+            {
+                echo "Usuario seguido correctamente";
+            }
+            else 
+            {
+                echo "Error al seguir usuario";
+            }
+            
+            exit;
+        }
+    }
+
+    include "../models/TablaUsuario.php";
+    include "../models/TablaPosts.php";
+    include "../models/TablaSeguidores.php";
+    require_once "../controllers/post.php";
+    
     // Obtener el usuario desde la URL
     $usuario_perfil = isset($_GET['username']) ? $_GET['username'] : '';
     
@@ -17,11 +55,6 @@
     }
 
     $usuario_sesion = $_SESSION["username"];
-    
-    include "../models/TablaUsuario.php";
-    include "../models/TablaPosts.php";
-    include "../models/TablaSeguidores.php";
-    require_once "../controllers/post.php";
     
     $conexion = conexion();
     

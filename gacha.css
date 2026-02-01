@@ -1,0 +1,238 @@
+/* CONTENEDOR PRINCIPAL */
+.gacha {
+    margin-left: 350px;
+    min-height: 100vh;
+    background-color: #000000;
+    padding: 40px 60px;
+    max-width: calc(100% - 350px);
+}
+
+/* TÍTULO */
+.gacha h1 {
+    font-size: 42px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 40px 0;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #2f3336;
+}
+
+/* CONTADOR DE ITEMS */
+.items-count {
+    color: #8b8b8b;
+    font-size: 16px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* CONTENEDOR DE ITEMS */
+.gacha-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+    margin-bottom: 60px;
+}
+
+/* TARJETA DE ITEM */
+.gacha_imagen {
+    background: #1a1a1a;
+    border: 1px solid #2f3336;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.gacha_imagen:hover {
+    transform: translateY(-5px);
+    border-color: #3f3f3f;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* CONTENEDOR DE IMAGEN */
+.gacha_imagen .image-wrapper {
+    height: 200px;
+    overflow: hidden;
+    background: #0f0f0f;
+    position: relative;
+}
+
+/* IMAGEN */
+.gacha_imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.gacha_imagen:hover img {
+    transform: scale(1.05);
+}
+
+/* BADGE DE RAREZA */
+.rarity-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* COLORES DE RAREZA */
+.rarity-badge.comun {
+    background: #6c757d;
+    color: #fff;
+}
+
+.rarity-badge.raro {
+    background: #007bff;
+    color: #fff;
+}
+
+.rarity-badge.épico {
+    background: #6f42c1;
+    color: #fff;
+}
+
+.rarity-badge.legendario {
+    background: #fd7e14;
+    color: #fff;
+}
+
+.rarity-badge.mítico {
+    background: #e83e8c;
+    color: #fff;
+}
+
+/* INFO DEL ITEM */
+.item-info {
+    padding: 20px;
+    border-top: 1px solid #2f3336;
+}
+
+/* NOMBRE DEL ITEM */
+.item-name {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* BOTÓN AÑADIR BANNER */
+.añadir__banner {
+    width: 100%;
+    padding: 12px 0;
+    background: #2f3336;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.añadir__banner:hover {
+    background: #3f3f3f;
+    transform: translateY(-2px);
+}
+
+/* BOTÓN TIRAR GACHA */
+.btn__tirar__gacha {
+    display: block;
+    width: 240px;
+    margin: 50px auto 60px;
+    padding: 16px 35px;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn__tirar__gacha:hover {
+    background: #ff5252;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+}
+
+/* MENSAJE DE COLECCIÓN VACÍA */
+.no-items-container {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.no-items-container .icon {
+    font-size: 64px;
+    margin-bottom: 25px;
+    opacity: 0.7;
+}
+
+.no-items-container h2 {
+    font-size: 28px;
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.no-items-container p {
+    font-size: 16px;
+    color: #8b8b8b;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+    .gacha {
+        margin-left: 300px;
+        max-width: calc(100% - 300px);
+        padding: 35px 45px;
+    }
+}
+
+@media (max-width: 992px) {
+    .gacha {
+        margin-left: 250px;
+        max-width: calc(100% - 250px);
+        padding: 30px 35px;
+    }
+    
+    .gacha-container {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .gacha {
+        margin-left: 0;
+        max-width: 100%;
+        padding: 25px 20px;
+    }
+    
+    .gacha-container {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 15px;
+    }
+    
+    .gacha h1 {
+        font-size: 32px;
+    }
+    
+    .btn__tirar__gacha {
+        width: 220px;
+        padding: 14px 30px;
+        font-size: 16px;
+    }
+}

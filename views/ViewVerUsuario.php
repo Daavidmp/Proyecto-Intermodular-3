@@ -1,5 +1,6 @@
 <?php 
     include "../controllers/verUsuario.php";
+    $ya_le_sigo = esSeguidor($conexion, $_SESSION["id"], $usuario_id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +10,8 @@
     <title>Perfil de <?php echo $username; ?></title>
     <link rel='stylesheet' type='text/css' media='screen' href='../sidebar.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='../menu.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../posts.css'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src='../scripts/sidebar.js'></script>
 </head>
 <body>
@@ -79,9 +82,9 @@
                     <p class="btn-texto">Editar perfil</p>
                 </button>
                 <?php else: ?>
-                <button class="btn-config" id="btn-seguir">
+                <button class="btn-config" id="btn-seguir" data-username="<?php echo $username?>" <?php echo $ya_le_sigo ? 'disabled style="opacity:0.7"' : ''; ?>>
                     <img src="https://cdn-icons-png.flaticon.com/128/1828/1828817.png">
-                    <p class="btn-texto">Seguir</p>
+                    <p class="btn-texto"><?php echo $ya_le_sigo ? "Siguiendo ✓" : "Seguir"; ?></p>
                 </button>
                 <?php endif; ?>
             </div>
@@ -125,22 +128,63 @@
             <hr>
             <div class="main__content__section7">
                 <h1>Posts</h1>
-                <?php foreach($postDeOtroUsuario as $posts):?>
-                <div class="main__content__section7__post">
-                    <div class="main__content__section7__post__primer">
-                        <img src="<?php echo $avatar_url;?>">
-                        <p><?php echo $username?></p>
-                    </div>
-                    <div class="main__content__section7__post__segon">
-                        <p><?php echo $posts["contenido"]?></p>
-                        <a href="<?php echo $posts["music_link"]?>">
-                            <img class="foto" src="<?php echo $posts["image_link"]?>">
-                        </a>
-                    </div>
-                </div>
-                <?php endforeach;?>    
+                <div class="contenido__posts">
+                    <?php foreach($postDeOtroUsuario as $posts): ?>
+                        <div class="post__container">
+                            <div class="post__columna__izquierda">
+                                <div class="post__avatar">
+                                    <img src="<?php echo $avatar_url; ?>">
+                                    <p><?php echo $username?></p>
+                                </div>
+                                
+                                <div class="contenido__texto">
+                                    <p><?php echo $posts["contenido"] ?></p>
+                                </div>
+                                
+                                <button class="mostrar__mas__btn" onclick="toggleTexto(this)">
+                                    Mostrar más
+                                </button>
+                            </div>
+                            
+                            <div class="post__columna__derecha">
+                                <a href="<?php echo $posts["music_link"] ?>" class="post__music__link" target="_blank">
+                                    <img class="post__music__image" src="<?php echo $posts["image_link"] ?>" alt="Portada de música">
+                                    <div class="post__music__badge">
+                                        <span>🎵</span>
+                                        <span>Escuchar</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>   
             </div>
         </div>
     </div>
 </body>
+<script>
+    $(document).ready(function() {
+        $("#btn-seguir").click(function (){
+            var username_a_seguir = $(this).data('username');
+            $.ajax({
+                url: "../controllers/verUsuario.php",
+                type: "POST",
+                data: {
+                    accion: "seguir",
+                    username_a_seguir: username_a_seguir
+                },
+
+                success: function(response)
+                {
+                    console.log("Éxito");
+                    $("#btn-seguir").html('<img src="https://cdn-icons-png.flaticon.com/128/1828/1828817.png"><p class="btn-texto">Siguiendo ✓</p>');
+                    $("#btn-seguir").prop('disabled', true).css("opacity", "0.7");
+
+                    location.reload();
+                }
+            });
+        });
+    });
+</script>
+<script src="../scripts/mostrarMas.js"></script>
 </html>

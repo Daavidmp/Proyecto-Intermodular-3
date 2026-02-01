@@ -101,7 +101,7 @@
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-.btn-config, .btn-trespuntos, .btn-compartir {
+.btn-config, .btn-trespuntos, .btn-compartir, .btn__gacha {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -111,7 +111,7 @@
     transition: all 0.3s ease;
 }
 
-.btn-config:hover, .btn-trespuntos:hover, .btn-compartir:hover {
+.btn-config:hover, .btn-trespuntos:hover, .btn-compartir:hover, .btn__gacha:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -123,7 +123,7 @@
     margin-left: 8px;
 }
 
-.btn-config img, .btn-trespuntos img, .btn-compartir img {
+.btn-config img, .btn-trespuntos img, .btn-compartir img, .btn__gacha img {
     height: 22px;
     width: 22px;
     filter: brightness(0) invert(1);
@@ -235,36 +235,29 @@ hr {
     background-color: rgb(28, 28, 28);
 }
 
-.main__content__section7__post__primer{
+.main__content__section7 h1{
+    margin-bottom: 40px;
+}
+
+.profile-header-info-stats{
     display: flex;
-    gap: 20px;
-    margin-top: 30px;
+    gap: 19px;
 }
 
-.main__content__section7__post__primer p{
-    padding-top: 16px;
+.btn__gacha {
+    position: relative;
 }
 
-.main__content__section7__post__primer img{
-    width: 60px;
-    border-radius: 50%;
-}
-
-.main__content__section7__post__segon{
-    margin-top: 15px;
-}
-
-.main__content__section7__post__segon p{
-    margin-bottom: 10px;
-    padding-bottom: 0;
-}
-
-.main__content__section7__post__segon a:hover{
-    color: red;
-}
-
-.foto {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 500px;
+.btn__gacha:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: black;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 14px;
 }

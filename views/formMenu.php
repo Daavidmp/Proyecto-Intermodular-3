@@ -1,4 +1,7 @@
 <?php 
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
     session_start();
 
     if(!isset($_SESSION["username"])) 
@@ -7,9 +10,10 @@
         exit;
     }
 
-    require_once "../controllers/menu.php";
+    include "../controllers/menu.php";
     require_once "../models/TablaPosts.php";
     require_once "../models/TablaSeguidores.php";
+    require_once "../controllers/gacha.php";
 
     $usuario = $_SESSION["username"];
     $conexion = conexion();
@@ -23,6 +27,7 @@
     <title>Perfil</title>
     <link rel='stylesheet' type='text/css' media='screen' href='../sidebar.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='../menu.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../posts.css'>
     <script src='../scripts/sidebar.js'></script>
 </head>
 <body>
@@ -68,18 +73,24 @@
                 <img class="main__content__section1__flecha" src="../img/flecha.png">
                 <div class="profile-header-info">
                     <h1 class="profile-name"><?php echo $usuario; ?></h1>
-                    <span class="post-count"><?php echo $postsTotales . " posts"?></span>
+                    <div class="profile-header-info-stats">
+                        <span class="post-count"><?php echo $postsTotales . " posts"?></span>
+                        <span class="post-count"><?php echo "Saldo: " . $saldoTotal . " MRTNs"?></span>
+                    </div>
                 </div>
             </div>
             <div class="containers">
                 <div class="banner">
-                    <img src="../img/bannerejemplo.jpg">
+                    <img src="../img/coleccionables/<?php echo $miBanner["rareza"]?>/<?php echo $miBanner["banner"]?>">
                 </div>
                 <div class="img__perfil">
                     <img src="<?php echo $avatar_url?>" onerror="this.src='../img/iconodefault.jpg'">
                 </div>
             </div>
             <div class="main__content__section2">
+                <button class="btn__gacha" data-tooltip="Obten un elemento personalizado por 10 MRTNs" onclick="window.location.href='ViewGacha.php'">
+                    <img src="https://cdn-icons-png.flaticon.com/128/992/992651.png">
+                </button>
                 <button class="btn-compartir">
                     <img src="https://cdn-icons-png.flaticon.com/128/3832/3832624.png">
                 </button>
@@ -121,23 +132,40 @@
             </div>
             <div class="main__content__section7">
                 <h1>Posts</h1>
-                <?php foreach($postDeMiUsuario as $posts):?>
-                <div class="main__content__section7__post">
-                    <div class="main__content__section7__post__primer">
-                        <img src="<?php echo $_SESSION["avatar_url"];?>">
-                        <p><?php echo $_SESSION["username"]?></p>
-                    </div>
-                    <div class="main__content__section7__post__segon">
-                        <p><?php echo $posts["contenido"]?></p>
-                        <a href="<?php echo $posts["music_link"]?>">
-                            <img class="foto" src="<?php echo $posts["image_link"]?>">
-                        </a>
-                    </div>
-                </div>
-                <?php endforeach;?>    
+                <div class="contenido__posts">
+                    <?php foreach($postDeMiUsuario as $posts): ?>
+                        <div class="post__container">
+                            <div class="post__columna__izquierda">
+                                <div class="post__avatar">
+                                    <img src="<?php echo $avatar_url; ?>">
+                                    <p><?php echo $usuario ?></p>
+                                </div>
+                                
+                                <div class="contenido__texto">
+                                    <p><?php echo $posts["contenido"] ?></p>
+                                </div>
+                                
+                                <button class="mostrar__mas__btn" onclick="toggleTexto(this)">
+                                    Mostrar más
+                                </button>
+                            </div>
+                            
+                            <div class="post__columna__derecha">
+                                <a href="<?php echo $posts["music_link"] ?>" class="post__music__link" target="_blank">
+                                    <img class="post__music__image" src="<?php echo $posts["image_link"] ?>" alt="Portada de música">
+                                    <div class="post__music__badge">
+                                        <span>🎵</span>
+                                        <span>Escuchar</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>   
             </div>
             <hr>
         </div>
     </div>
 </body>
+<script src="../scripts/mostrarMas.js"></script>
 </html>
