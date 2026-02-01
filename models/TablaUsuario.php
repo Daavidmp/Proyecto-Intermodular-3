@@ -12,11 +12,11 @@
 
     function crearUsuario($conexion, $username, $email, $contrasenya) 
     {
-        $sql = "INSERT INTO usuarios (username, email, contrasenya, saldo) VALUES (:username, :email, :contrasenya, :saldo)";
+        $sql = "INSERT INTO usuarios (username, email, contrasenya, saldo, fecha) VALUES (:username, :email, :contrasenya, :saldo, CURRENT_TIME)";
         $stmt = $conexion->prepare($sql);
     
         $stmt->execute([':username' => $username, ':email' => $email,
-            ':contrasenya' => $contrasenya, ':saldo' => 0
+            ':contrasenya' => $contrasenya, ':saldo' => 0,
         ]);
             
         echo "Usuario insertado correctamente.<br>";
@@ -139,7 +139,7 @@
 
     function obtenerBannerDeMiUsuario($conexion, $id)
     {
-        $ssql = "SELECT u.banner, g.rareza FROM usuarios u INNER JOIN gacha_obtenidos g ON u.id = g.usuario_id AND u.banner = g.nombre_imagen
+        $ssql = "SELECT u.banner, g.rareza FROM usuarios u LEFT JOIN gacha_obtenidos g ON u.id = g.usuario_id AND u.banner = g.nombre_imagen
         WHERE u.id = :id";
 
         $stmt = $conexion->prepare($ssql);
@@ -147,6 +147,11 @@
         $stmt->execute();
 
         $banner = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($banner === false) {
+            $banner = ['banner' => null, 'rareza' => null];
+        }
+
         return $banner;
     }
 ?>

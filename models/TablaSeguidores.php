@@ -80,4 +80,19 @@
 
         return $stmt->fetchColumn() > 0;
     }
+
+    function listarUsuariosALosQueSigo($conexion, $id)
+    {
+        $ssql = "SELECT u.id, u.username, u.avatar_url, u.biografia 
+                FROM seguidores s 
+                INNER JOIN usuarios u ON s.seguidor_id = u.id 
+                WHERE s.receptor_id = :id 
+                ORDER BY s.fecha DESC";
+        
+        $stmt = $conexion->prepare($ssql);
+        $stmt->bindParam(":id", $id, PDO::PARAM_STR);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 ?>

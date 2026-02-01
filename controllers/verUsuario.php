@@ -77,4 +77,6 @@
     $posts_totales = obtenerPostsTotalesUsuario($conexion, $username);
     $siguiendo = obtenerSiguiendoUsuario($conexion, $usuario_id);
     $seguidores = obtenerSeguidoresUsuario($conexion, $usuario_id);
+    
+    $bannerOtroUsuario = obtenerBannerDeMiUsuario($conexion, $datosUsuario["id"]);
 ?>

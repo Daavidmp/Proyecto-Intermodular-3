@@ -1,7 +1,4 @@
 <?php 
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
     session_start();
 
     if(!isset($_SESSION["username"])) 
@@ -28,7 +25,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='../sidebar.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='../menu.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='../posts.css'>
-    <script src='../scripts/sidebar.js'></script>
+    <script src="../scripts/sidebar.js"></script>
 </head>
 <body>
     <div class="profile">
@@ -54,9 +51,9 @@
                 <img src="https://cdn-icons-png.flaticon.com/128/9308/9308015.png">
                 <p>Perfil</p>
             </button>
-            <button class="sidebar__musica">
-                <img src="https://cdn-icons-png.flaticon.com/128/651/651717.png">
-                <p>Mi musica</p>
+            <button class="sidebar__logros">
+                <img src="https://cdn-icons-png.flaticon.com/128/8527/8527971.png">
+                <p>Mis misiones</p>
             </button>
             <button class="sidebar__monedas" onclick="window.location.href='ViewComprarMonedas.php'">
                 <img src="https://cdn-icons-png.flaticon.com/512/846/846061.png">
@@ -81,7 +78,12 @@
             </div>
             <div class="containers">
                 <div class="banner">
-                    <img src="../img/coleccionables/<?php echo $miBanner["rareza"]?>/<?php echo $miBanner["banner"]?>">
+                    <?php if(!empty($miBanner["banner"]) && !empty($miBanner["rareza"])): ?>
+                        <img src="../img/coleccionables/<?php echo htmlspecialchars($miBanner["rareza"]); ?>/<?php echo htmlspecialchars($miBanner["banner"]); ?>"
+                            onerror="this.src='../img/banner-default.jpg'">
+                    <?php else: ?>
+                        <img src="../img/bannerejemplo.jpg" alt="Banner por defecto">
+                    <?php endif; ?>
                 </div>
                 <div class="img__perfil">
                     <img src="<?php echo $avatar_url?>" onerror="this.src='../img/iconodefault.jpg'">

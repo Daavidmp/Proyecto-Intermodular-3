@@ -27,7 +27,7 @@ body {
 }
 
 .sidebar__inicio, .sidebar__buscar, .sidebar__notificaciones, 
-.sidebar__mensajes, .sidebar__perfil, .sidebar__musica, 
+.sidebar__mensajes, .sidebar__perfil, .sidebar__logros, 
 .sidebar__monedas, .cerrar__sesion {
     display: flex;
     align-items: center;
@@ -44,13 +44,13 @@ body {
 }
 
 .sidebar__inicio:hover, .sidebar__buscar:hover, .sidebar__notificaciones:hover,
-.sidebar__mensajes:hover, .sidebar__perfil:hover, .sidebar__musica:hover,
+.sidebar__mensajes:hover, .sidebar__perfil:hover, .sidebar__logros:hover,
 .sidebar__monedas:hover, .cerrar__sesion:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
 .sidebar__inicio img, .sidebar__buscar img, .sidebar__notificaciones img,
-.sidebar__mensajes img, .sidebar__perfil img, .sidebar__musica img,
+.sidebar__mensajes img, .sidebar__perfil img, .sidebar__logros img,
 .sidebar__monedas img, .cerrar__sesion img {
     height: 26px;
     width: 26px;
@@ -58,7 +58,7 @@ body {
 }
 
 .sidebar__inicio p, .sidebar__buscar p, .sidebar__notificaciones p,
-.sidebar__mensajes p, .sidebar__perfil p, .sidebar__musica p,
+.sidebar__mensajes p, .sidebar__perfil p, .sidebar__logros p,
 .sidebar__monedas p, .cerrar__sesion p {
     font-size: 20px;
     font-weight: 500;

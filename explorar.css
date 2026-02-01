@@ -1,202 +1,202 @@
 .explorar {
-    margin-left: 275px; /* Mismo ancho que sidebar */
-    padding: 40px;
+    margin-left: 300px;
     min-height: 100vh;
     background-color: #000000;
-    width: calc(100% - 275px); /* Ocupa el resto del espacio */
+    padding: 0 50px;
+    max-width: calc(100% - 300px);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .explorar h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 30px 0 0 0;
     color: #ffffff;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 12px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #2f3336;
+    letter-spacing: -0.5px;
 }
 
-.explorar p {
+.explorar > p {
+    font-size: 18px;
+    color: #8b8b8b;
+    margin-bottom: 0;
+    padding-top: 10px;
+    line-height: 1.5;
+}
+
+#buscador {
+    width: 100%;
+    margin-top: 35px;
+    padding: 16px 24px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    border: 1px solid #2f3336;
+    border-radius: 30px;
+    color: #e7e9ea;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.2s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+#buscador:focus {
+    border-color: #1d9bf0;
+    background-color: rgba(29, 155, 240, 0.05);
+}
+
+#buscador::placeholder {
     color: #8b8b8b;
     font-size: 16px;
-    margin-bottom: 0;
 }
 
-.explorar input {
-    width: 100%;
-    max-width: 600px;
-    padding: 16px 24px;
-    border-radius: 12px;
-    border: 2px solid #2f3336;
-    background-color: #1a1a1a;
-    color: #ffffff;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    margin-top: 25px;
-    margin-bottom: 40px;
-}
-
-.explorar input:focus {
-    outline: none;
-    border-color: #9c01c0;
-    background-color: #0f0f0f;
-}
-
-.explorar input::placeholder {
-    color: #6e6e6e;
-}
-
-/* LISTA DE USUARIOS - DENTRO DE .explorar */
-.explorar__usuarios {
-    margin-left: 0; /* IMPORTANTE: sin margen izquierdo */
-    padding: 0; /* Sin padding lateral */
-    max-width: 100%; /* Ocupa todo el ancho disponible */
-    width: 100%;
-}
-
+/* LISTA DE USUARIOS - MANTENIENDO TU ESTRUCTURA */
 .usuario-item {
     display: flex;
     align-items: center;
-    padding: 20px 0;
-    border-bottom: 1px solid #2f3336;
-    transition: background-color 0.2s ease;
     width: 100%;
-    max-width: 800px; /* Limita el ancho máximo */
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    cursor: default; /* Cambiado de pointer a default */
+    transition: all 0.2s ease;
+    text-align: left;
+    color: #e7e9ea;
+    position: relative;
+    border-bottom: 1px solid #2f3336;
 }
 
 .usuario-item:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.usuario-item:active {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
-.usuario-item:last-child {
-    border-bottom: none;
-}
-
-/* Avatar del usuario */
+/* BOTÓN DEL AVATAR */
 .explorar__usuarios__boton {
     background: none;
     border: none;
     padding: 0;
     cursor: pointer;
-    width: fit-content;
     margin-right: 20px;
     flex-shrink: 0;
 }
 
-.explorar__usuarios img {
-    height: 70px;
-    width: 70px;
+.explorar__usuarios__boton img {
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #9c01c0;
+    border: 2px solid #2f3336;
     background-color: #2f3336;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    transition: border-color 0.2s ease;
 }
 
-.explorar__usuarios img:hover {
-    transform: scale(1.05);
-    border-color: #fc204c;
+.explorar__usuarios__boton:hover img {
+    border-color: #1d9bf0;
 }
 
-/* Información del usuario */
+/* INFORMACIÓN DEL USUARIO */
 .explorar__usuarios__info {
     flex-grow: 1;
     text-align: left;
-    min-width: 0; /* IMPORTANTE para flexbox con texto largo */
+    min-width: 0;
     overflow: hidden;
 }
 
 .explorar__usuarios__info p:first-child {
     font-size: 18px;
     font-weight: 600;
-    margin-bottom: 4px;
-    color: #ffffff;
+    margin: 0;
+    color: #e7e9ea;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    max-width: 100%;
 }
 
 .explorar__usuarios__info p:last-child {
     font-size: 15px;
     color: #8b8b8b;
-    margin-bottom: 0;
+    margin: 4px 0 0 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+/* NO RESULTADOS - AJUSTADO */
+.no-resultados {
+    text-align: center;
+    padding: 60px 20px;
+    color: #8b8b8b;
+    font-size: 18px;
+    border-top: 1px solid #2f3336;
+    margin-top: 20px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
     max-width: 100%;
 }
 
-/* Botón de seguir */
-.explorar__usuarios__seguir {
-    margin-left: auto;
-    flex-shrink: 0;
+/* Scrollbar personalizado */
+.explorar::-webkit-scrollbar {
+    width: 10px;
 }
 
-.btn-seguir {
-    cursor: pointer;
-    background-color: transparent;
-    border: 1px solid #2f3336;
-    color: #ffffff;
-    padding: 10px 24px;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    min-width: 100px;
+.explorar::-webkit-scrollbar-track {
+    background: #000000;
 }
 
-.btn-seguir:hover {
-    background-color: #1e74f5;
-    border-color: #1e74f5;
-    transform: scale(1.05);
+.explorar::-webkit-scrollbar-thumb {
+    background: #2f3336;
+    border-radius: 5px;
+    border: 2px solid #000000;
 }
 
-.btn-siguiendo {
-    background-color: transparent;
-    border: 1px solid #2f3336;
-    color: #ffffff;
-}
-
-.btn-siguiendo:hover {
-    background-color: #fc204c;
-    border-color: #fc204c;
-    color: #ffffff;
+.explorar::-webkit-scrollbar-thumb:hover {
+    background: #4a4e52;
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-    .sidebar {
-        width: 70px;
-        padding: 20px 10px;
-    }
-    
-    .sidebar p {
-        display: none;
-    }
-    
-    .titulo {
-        font-size: 20px;
-        padding: 10px;
-        text-align: center;
-    }
-    
+@media (max-width: 1024px) {
     .explorar {
-        margin-left: 70px;
+        margin-left: 250px;
+        max-width: calc(100% - 250px);
+        padding: 0 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .explorar {
+        margin-left: 0;
+        max-width: 100%;
         padding: 20px;
-        width: calc(100% - 70px);
+        margin-bottom: 80px;
     }
     
     .explorar h1 {
-        font-size: 24px;
+        font-size: 28px;
+        margin-top: 20px;
+        margin-bottom: 0;
     }
     
-    .explorar input {
-        max-width: 100%;
-        margin-bottom: 30px;
+    .explorar > p {
+        font-size: 16px;
     }
     
-    .explorar__usuarios img {
-        height: 60px;
-        width: 60px;
+    .usuario-item {
+        padding: 14px 0;
+        margin-bottom: 0;
+    }
+    
+    .explorar__usuarios__boton img {
+        width: 48px;
+        height: 48px;
+        margin-right: 15px;
     }
     
     .explorar__usuarios__info p:first-child {
@@ -207,38 +207,70 @@
         font-size: 14px;
     }
     
-    .usuario-item {
-        max-width: 100%;
+    .no-resultados {
+        padding: 40px 15px;
+        font-size: 16px;
     }
 }
 
 @media (max-width: 480px) {
-    .usuario-item {
-        padding: 15px 0;
+    .explorar {
+        padding: 15px;
     }
     
-    .explorar__usuarios img {
-        height: 50px;
-        width: 50px;
-        margin-right: 15px;
+    .explorar h1 {
+        font-size: 24px;
+        margin: 15px 0 0 0;
     }
     
-    .btn-seguir {
-        padding: 8px 16px;
-        min-width: 80px;
-        font-size: 12px;
+    .explorar > p {
+        font-size: 14px;
+    }
+    
+    #buscador {
+        padding: 14px 20px;
+        margin-top: 25px;
+    }
+    
+    .explorar__usuarios__boton img {
+        width: 44px;
+        height: 44px;
+        margin-right: 12px;
+    }
+    
+    .explorar__usuarios__info p:first-child {
+        font-size: 15px;
+    }
+    
+    .explorar__usuarios__info p:last-child {
+        font-size: 13px;
+    }
+    
+    .no-resultados {
+        padding: 30px 10px;
+        font-size: 14px;
     }
 }
 
-/* Mensajes de estado */
-.no-resultados {
-    color: #8b8b8b;
-    font-size: 18px;
-    text-align: center;
-    padding: 40px;
-    border: 2px dashed #2f3336;
-    border-radius: 15px;
-    margin-top: 20px;
-    background-color: rgba(42, 42, 42, 0.5);
-    max-width: 800px;
+/* Animación de entrada */
+.usuario-item {
+    animation: fadeIn 0.3s ease forwards;
+    opacity: 0;
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.usuario-item:nth-child(1) { animation-delay: 0.1s; }
+.usuario-item:nth-child(2) { animation-delay: 0.2s; }
+.usuario-item:nth-child(3) { animation-delay: 0.3s; }
+.usuario-item:nth-child(4) { animation-delay: 0.4s; }
+.usuario-item:nth-child(5) { animation-delay: 0.5s; }

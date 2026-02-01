@@ -18,7 +18,7 @@
         
         if(empty($biografia)) 
         {
-            $biografia = "¡Hola! Soy " . $usuario . " | Esta es mi biografía en MRTN";
+            $biografia = "¡Hola Usuario! | Esta es mi biografía en MRTN";
         }
 
         if(empty($avatar_url)) 

@@ -1,5 +1,5 @@
 <?php 
-    include "../controllers/verUsuario.php";
+    require_once "../controllers/verUsuario.php";
     $ya_le_sigo = esSeguidor($conexion, $_SESSION["id"], $usuario_id);
 ?>
 <!DOCTYPE html>
@@ -12,7 +12,6 @@
     <link rel='stylesheet' type='text/css' media='screen' href='../menu.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='../posts.css'>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src='../scripts/sidebar.js'></script>
 </head>
 <body>
     <div class="profile">
@@ -38,9 +37,9 @@
                 <img src="https://cdn-icons-png.flaticon.com/128/9308/9308015.png">
                 <p>Perfil</p>
             </button>
-            <button class="sidebar__musica">
-                <img src="https://cdn-icons-png.flaticon.com/128/651/651717.png">
-                <p>Mi musica</p>
+            <button class="sidebar__logros">
+                <img src="https://cdn-icons-png.flaticon.com/128/8527/8527971.png">
+                <p>Mis misiones</p>
             </button>
             <button class="sidebar__monedas" onclick="window.location.href='ViewComprarMonedas.php'">
                 <img src="https://cdn-icons-png.flaticon.com/512/846/846061.png">
@@ -62,7 +61,12 @@
             </div>
             <div class="containers">
                 <div class="banner">
-                    <img src="../img/bannerejemplo.jpg">
+                    <?php if(!empty($bannerOtroUsuario["banner"]) && !empty($bannerOtroUsuario["rareza"])): ?>
+                        <img src="../img/coleccionables/<?php echo htmlspecialchars($bannerOtroUsuario["rareza"]); ?>/<?php echo htmlspecialchars($bannerOtroUsuario["banner"]); ?>"
+                            onerror="this.src='../img/banner-default.jpg'">
+                    <?php else: ?>
+                        <img src="../img/bannerejemplo.jpg" alt="Banner por defecto">
+                    <?php endif; ?>
                 </div>
                 <div class="img__perfil">
                     <img src="<?php echo $avatar_url; ?>" 

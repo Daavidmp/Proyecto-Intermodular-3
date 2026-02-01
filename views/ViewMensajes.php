@@ -39,10 +39,10 @@
             <img src="https://cdn-icons-png.flaticon.com/128/9308/9308015.png">
             <p>Perfil</p>
         </button>
-        <button class="sidebar__musica">
-            <img src="https://cdn-icons-png.flaticon.com/128/651/651717.png">
-            <p>Mi musica</p>
-        </button>
+        <button class="sidebar__logros">
+                <img src="https://cdn-icons-png.flaticon.com/128/8527/8527971.png">
+                <p>Mis misiones</p>
+            </button>
         <button class="sidebar__monedas" onclick="window.location.href='ViewComprarMonedas.php'">
                 <img src="https://cdn-icons-png.flaticon.com/512/846/846061.png">
                 <p>Comprar Monedas</p>
@@ -56,7 +56,7 @@
         <input type="text" id="buscador" name="buscar" placeholder="Buscar por nombre de usuario">
         <p>Mensajes</p>
         <?php  
-            foreach($resultado as $usuarios)
+            foreach($chat as $usuarios)
             {
                 $receptor_id = $usuarios['id']; 
                 

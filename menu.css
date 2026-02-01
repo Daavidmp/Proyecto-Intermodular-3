@@ -261,3 +261,64 @@ hr {
     white-space: nowrap;
     font-size: 14px;
 }
+
+/* ============================================
+   MAIN CONTENT - OCUPA TODO EL ANCHO RESTANTE
+   (Respetando el sidebar existente)
+   ============================================ */
+
+/* 1. El contenedor principal usa todo el ancho */
+.profile {
+    display: flex;
+    width: 100vw; /* 100% del viewport */
+    min-height: 100vh;
+    position: relative;
+}
+
+/* 2. MAIN CONTENT: Todo el espacio después del sidebar */
+.main__content {
+    margin-left: 330px; /* MISMO que el width de tu sidebar */
+    width: calc(100vw - 250px); /* 100% del viewport menos sidebar */
+    min-height: 100vh;
+    background-color: #000; /* Tu color de fondo */
+    color: #fff;
+    position: relative;
+}
+
+/* 3. Todas las secciones internas ocupan el 100% del main_content */
+.main__content__section1,
+.main__content__section2,
+.main__content__section3,
+.main__content__section4,
+.main__content__section5,
+.main__content__section6,
+.main__content__section7,
+.containers {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 4. Banner ocupa todo el ancho disponible */
+.banner {
+    width: 100%;
+    display: block;
+}
+
+.banner img {
+    width: 100%;
+    display: block;
+}
+
+/* 5. Posts ocupan todo el ancho */
+.contenido__posts {
+    width: 100%;
+}
+
+.post__container {
+    width: 100%;
+}
+
+/* 6. Asegurar que no haya overflow horizontal */
+body {
+    overflow-x: hidden;
+}
