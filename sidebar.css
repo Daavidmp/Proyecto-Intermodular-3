@@ -28,7 +28,7 @@ body {
 
 .sidebar__inicio, .sidebar__buscar, .sidebar__notificaciones, 
 .sidebar__mensajes, .sidebar__perfil, .sidebar__musica, 
-.sidebar__vivo, .cerrar__sesion {
+.sidebar__monedas, .cerrar__sesion {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -45,13 +45,13 @@ body {
 
 .sidebar__inicio:hover, .sidebar__buscar:hover, .sidebar__notificaciones:hover,
 .sidebar__mensajes:hover, .sidebar__perfil:hover, .sidebar__musica:hover,
-.sidebar__vivo:hover, .cerrar__sesion:hover {
+.sidebar__monedas:hover, .cerrar__sesion:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
 .sidebar__inicio img, .sidebar__buscar img, .sidebar__notificaciones img,
 .sidebar__mensajes img, .sidebar__perfil img, .sidebar__musica img,
-.sidebar__vivo img, .cerrar__sesion img {
+.sidebar__monedas img, .cerrar__sesion img {
     height: 26px;
     width: 26px;
     filter: brightness(0) invert(1);
@@ -59,7 +59,7 @@ body {
 
 .sidebar__inicio p, .sidebar__buscar p, .sidebar__notificaciones p,
 .sidebar__mensajes p, .sidebar__perfil p, .sidebar__musica p,
-.sidebar__vivo p, .cerrar__sesion p {
+.sidebar__monedas p, .cerrar__sesion p {
     font-size: 20px;
     font-weight: 500;
     padding-bottom: 0;

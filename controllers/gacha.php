@@ -42,13 +42,19 @@
 
                 guardarRecompensa($conexion, $nombre_imagen, $rareza, $usuario_id);
 
-                echo "¡Gacha completado! Obtuviste: $nombre_imagen (Rareza: $rareza)";
+                echo json_encode([
+                    "success" => true,
+                    "message" => "¡Gacha completado! Obtuviste: $nombre_imagen (Rareza: $rareza)"
+                ]);
 
                 exit;
             }
             else
             {
-                echo "Saldo insuficiente. Necesitas 10 monedas. (Tienes: $saldoTotal)";
+                echo json_encode([
+                    "success" => false,
+                    "message" => "Saldo insuficiente. Necesitas 10 monedas. (Tienes: $saldoTotal)"
+                ]);
                 exit;
             }
         }

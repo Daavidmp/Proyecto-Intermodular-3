@@ -37,10 +37,10 @@
             <img src="https://cdn-icons-png.flaticon.com/128/651/651717.png">
             <p>Mi musica</p>
         </button>
-        <button class="sidebar__vivo">
-            <img src="https://cdn-icons-png.flaticon.com/128/8459/8459506.png">
-            <p>En vivo</p>
-        </button>
+        <button class="sidebar__monedas" onclick="window.location.href='ViewComprarMonedas.php'">
+                <img src="https://cdn-icons-png.flaticon.com/512/846/846061.png">
+                <p>Comprar Monedas</p>
+            </button>
         <button class="cerrar__sesion" onclick="window.location.href = '../controllers/cerrarSesion.php'">
             <img src="https://cdn-icons-png.flaticon.com/512/660/660350.png">
             <p>Cerrar Sesión</p>
