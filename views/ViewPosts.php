@@ -9,6 +9,7 @@
     <title>Posts</title>
     <link rel='stylesheet' type='text/css' media='screen' href='../sidebar.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='../posts.css'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src='../scripts/sidebar.js'></script>
 </head>
 <body>
@@ -68,6 +69,17 @@
                         </button>
                     </div>
                     
+                    <div class="post__valoraciones">
+                        <button class="post__valoraciones__likes" data-idPost="<?php echo $p["id"]?>">
+                            <img src="https://cdn-icons-png.flaticon.com/128/9513/9513802.png">
+                            <p><?php echo $p["likes"]?></p>
+                        </button>
+                        <button class="post__valoraciones__dislikes">
+                            <img src="https://cdn-icons-png.flaticon.com/128/880/880613.png">
+                            <p><?php echo $p["dislikes"]?></p>
+                        </button>
+                    </div>
+
                     <div class="post__columna__derecha">
                         <a href="<?php echo $p["music_link"] ?>" class="post__music__link" target="_blank">
                             <img class="post__music__image" src="<?php echo $p["image_link"] ?>" alt="Portada de música">

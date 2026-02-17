@@ -849,3 +849,147 @@ button:focus-visible {
 .post__container:last-child .post__avatar::before {
     display: none;
 }
+
+/* ============================================
+   VALORACIONES DE POSTS - SIN MODIFICAR LAYOUT
+   ============================================ */
+
+.post__valoraciones {
+    /* Mantiene el flujo natural sin cambiar posiciones */
+    display: inline-flex;
+    align-items: center;
+    gap: 25px;
+    margin: -272px 0 0 0;
+    padding: 12px 0;
+    width: fit-content;
+}
+
+/* Botones de like y dislike */
+.post__valoraciones__likes,
+.post__valoraciones__dislikes {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+}
+
+/* Efectos hover sin cambiar layout */
+.post__valoraciones__likes:hover,
+.post__valoraciones__dislikes:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Imágenes de los botones */
+.post__valoraciones__likes img,
+.post__valoraciones__dislikes img {
+    width: 22px;
+    height: 22px;
+    filter: brightness(0) invert(0.7);
+    transition: filter 0.2s ease;
+}
+
+/* Texto de contadores */
+.post__valoraciones__likes p,
+.post__valoraciones__dislikes p {
+    color: #8b8b8b;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0;
+    transition: color 0.2s ease;
+}
+
+/* Efectos específicos para like */
+.post__valoraciones__likes:hover img {
+    filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(175deg);
+}
+
+.post__valoraciones__likes:hover p {
+    color: #1d9bf0;
+}
+
+/* Efectos específicos para dislike */
+.post__valoraciones__dislikes:hover img {
+    filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(300deg);
+}
+
+.post__valoraciones__dislikes:hover p {
+    color: #f91880;
+}
+
+/* Estados activos (para JavaScript) */
+.post__valoraciones__likes.activo {
+    background-color: rgba(29, 155, 240, 0.1);
+}
+
+.post__valoraciones__likes.activo img {
+    filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(175deg);
+}
+
+.post__valoraciones__likes.activo p {
+    color: #1d9bf0;
+    font-weight: 600;
+}
+
+.post__valoraciones__dislikes.activo {
+    background-color: rgba(249, 24, 128, 0.1);
+}
+
+.post__valoraciones__dislikes.activo img {
+    filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(300deg);
+}
+
+.post__valoraciones__dislikes.activo p {
+    color: #f91880;
+    font-weight: 600;
+}
+
+/* Responsive sin romper layout */
+@media (max-width: 768px) {
+    .post__valoraciones {
+        gap: 20px;
+        padding: 10px 0;
+    }
+    
+    .post__valoraciones__likes,
+    .post__valoraciones__dislikes {
+        padding: 6px 12px;
+    }
+    
+    .post__valoraciones__likes img,
+    .post__valoraciones__dislikes img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .post__valoraciones__likes p,
+    .post__valoraciones__dislikes p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .post__valoraciones {
+        gap: 15px;
+    }
+    
+    .post__valoraciones__likes,
+    .post__valoraciones__dislikes {
+        padding: 5px 10px;
+    }
+    
+    .post__valoraciones__likes img,
+    .post__valoraciones__dislikes img {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .post__valoraciones__likes p,
+    .post__valoraciones__dislikes p {
+        font-size: 13px;
+    }
+}

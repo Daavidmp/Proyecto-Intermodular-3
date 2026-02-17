@@ -51,7 +51,7 @@
                 <img src="https://cdn-icons-png.flaticon.com/128/9308/9308015.png">
                 <p>Perfil</p>
             </button>
-            <button class="sidebar__logros">
+            <button class="sidebar__logros" onclick="window.location.href='ViewMisiones.php'">
                 <img src="https://cdn-icons-png.flaticon.com/128/8527/8527971.png">
                 <p>Mis misiones</p>
             </button>
@@ -149,6 +149,17 @@
                                 
                                 <button class="mostrar__mas__btn" onclick="toggleTexto(this)">
                                     Mostrar más
+                                </button>
+                            </div>
+
+                            <div class="post__valoraciones">
+                                <button class="post__valoraciones__likes">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/9513/9513802.png">
+                                    <p><?php echo $posts["likes"]?></p>
+                                </button>
+                                <button class="post__valoraciones__dislikes">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/880/880613.png">
+                                    <p><?php echo $posts["dislikes"]?></p>
                                 </button>
                             </div>
                             

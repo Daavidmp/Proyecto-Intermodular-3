@@ -149,6 +149,17 @@
                                     Mostrar más
                                 </button>
                             </div>
+
+                            <div class="post__valoraciones">
+                                <button class="post__valoraciones__likes">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/9513/9513802.png">
+                                    <p><?php echo $posts["likes"]?></p>
+                                </button>
+                                <button class="post__valoraciones__dislikes">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/880/880613.png">
+                                    <p><?php echo $posts["dislikes"]?></p>
+                                </button>
+                            </div>
                             
                             <div class="post__columna__derecha">
                                 <a href="<?php echo $posts["music_link"] ?>" class="post__music__link" target="_blank">

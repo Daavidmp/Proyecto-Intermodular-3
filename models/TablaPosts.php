@@ -18,7 +18,8 @@
     function crearPost($conexion, $usuario_id, $contenido, $image_link, $music_link)
     {
         $likes = 0;
-        $ssql = "INSERT INTO posts (usuario_id, contenido, image_link, music_link, likes) VALUES (:usuario_id, :contenido, :image_link, :music_link, :likes)";
+        $dislikes = 0;
+        $ssql = "INSERT INTO posts (usuario_id, contenido, image_link, music_link, likes, dislikes) VALUES (:usuario_id, :contenido, :image_link, :music_link, :likes, :dislikes)";
 
         $stmt = $conexion->prepare($ssql);
         $stmt->bindParam(":usuario_id", $usuario_id);
@@ -26,6 +27,7 @@
         $stmt->bindParam(":image_link", $image_link);
         $stmt->bindParam(":music_link", $music_link);
         $stmt->bindParam(":likes", $likes);
+        $stmt->bindParam(":dislikes", $dislikes);
 
         $resultado = $stmt->execute();
 
@@ -54,5 +56,10 @@
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function añadirLike($conexion)
+    {
+        
     }
 ?>
