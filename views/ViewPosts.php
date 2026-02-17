@@ -35,7 +35,7 @@
             <img src="https://cdn-icons-png.flaticon.com/128/9308/9308015.png">
             <p>Perfil</p>
         </button>
-        <button class="sidebar__logros">
+        <button class="sidebar__logros" onclick="window.location.href='ViewMisiones.php'">
                 <img src="https://cdn-icons-png.flaticon.com/128/8527/8527971.png">
                 <p>Mis misiones</p>
             </button>

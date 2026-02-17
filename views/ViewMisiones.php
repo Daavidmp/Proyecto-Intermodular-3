@@ -34,9 +34,9 @@
             <p>Perfil</p>
         </button>
         <button class="sidebar__logros" onclick="window.location.href='ViewMisiones.php'">
-            <img src="https://cdn-icons-png.flaticon.com/128/8527/8527971.png">
-            <p>Mis misiones</p>
-        </button>
+                <img src="https://cdn-icons-png.flaticon.com/128/8527/8527971.png">
+                <p>Mis misiones</p>
+            </button>
         <button class="sidebar__monedas" onclick="window.location.href='ViewComprarMonedas.php'">
             <img src="https://cdn-icons-png.flaticon.com/512/846/846061.png">
             <p>Comprar Monedas</p>
