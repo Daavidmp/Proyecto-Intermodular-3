@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explorar</title>
     <script src="../scripts/sidebar.js"></script>
-    <link rel='stylesheet' type='text/css' media='screen' href='../sidebar.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='../explorar.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/sidebar.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/explorar.css'>
     <style>
         /* Añade esto para asegurar que los usuarios sean visibles */
         .usuario-item {

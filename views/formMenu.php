@@ -22,9 +22,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
-    <link rel='stylesheet' type='text/css' media='screen' href='../sidebar.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='../menu.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='../posts.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/sidebar.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/menu.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/posts.css'>
     <script src="../scripts/sidebar.js"></script>
 </head>
 <body>
