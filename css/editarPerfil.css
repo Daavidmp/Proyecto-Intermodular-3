@@ -1,0 +1,149 @@
+.form {
+    padding: 20px;
+    min-height: 100vh;
+    background-color: #000000;
+    flex-grow: 1;
+    width: auto;
+    box-sizing: border-box;
+}
+
+.form form {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #1a1a1a;
+    padding: 40px;
+    border-radius: 30px;
+    border: 1px solid #2f3336;
+}
+
+.form__titulo {
+    background: linear-gradient(90deg, #fc204c, #9c01c0, #1e74f5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Poppins", "Montserrat", sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.form__label {
+    display: block;
+    padding-bottom: 10px;
+    padding-top: 25px;
+    color: #8b8b8b;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.form__input {
+    padding: 18px 20px;
+    border-radius: 15px;
+    font-size: 18px;
+    border: 2px solid #2f3336;
+    background-color: #000000;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.form__input:focus {
+    border-color: #9c01c0;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(156, 1, 192, 0.2);
+}
+
+#btn__form__editar {
+    margin-top: 50px;
+    padding: 18px 0;
+    font-size: 20px;
+    border-radius: 15px;
+    background: linear-gradient(90deg, #fc204c, #9c01c0, #1e74f5);
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+#btn__form__editar:hover {
+    background: linear-gradient(90deg, #1e74f5, #9c01c0, #fc204c);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(156, 1, 192, 0.3);
+}
+
+/* Diseño Responsivo */
+@media (max-width: 1200px) {
+    .form {
+        padding: 20px;
+    }
+
+    .form form {
+        padding: 40px;
+    }
+
+    .form__titulo {
+        font-size: 38px;
+    }
+}
+
+@media (max-width: 992px) {
+    .form form {
+        padding: 30px;
+        border-radius: 25px;
+    }
+
+    .form__titulo {
+        font-size: 34px;
+        margin-bottom: 30px;
+    }
+
+    .form__input {
+        padding: 16px;
+        font-size: 16px;
+    }
+
+    #btn__form__editar {
+        padding: 16px 0;
+        font-size: 18px;
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .form {
+        padding: 10px;
+        margin-bottom: 80px;
+    }
+    
+    .form form {
+        padding: 25px;
+        border-radius: 20px;
+        margin-top: 10px;
+    }
+    
+    .form__titulo {
+        font-size: 28px;
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form form {
+        padding: 20px;
+    }
+    
+    .form__titulo {
+        font-size: 24px;
+    }
+    
+    .form__input {
+        padding: 12px;
+        font-size: 14px;
+    }
+}

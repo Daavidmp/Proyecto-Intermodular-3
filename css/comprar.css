@@ -1,0 +1,342 @@
+.comprar {
+
+    min-height: 100vh;
+    background-color: #000000;
+    padding: 0 50px;
+    width: 100%; box-sizing: border-box;
+    padding-bottom: 60px;
+}
+
+.comprar h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 40px;
+    color: white;
+    padding: 30px 0;
+    border-bottom: 1px solid #111111;
+}
+
+/* Contenedor de las opciones de monedas */
+.comprar__monedas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 30px 0;
+    margin-bottom: 50px;
+}
+
+/* Estilos para cada paquete de monedas */
+.comprar__monedas > div {
+    position: relative;
+    background-color: #000000;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #222222;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 380px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.comprar__monedas > div:hover {
+    border-color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+}
+
+/* Imágenes de los paquetes - OCUPAN TODO EL CONTENEDOR */
+.comprar__monedas img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cambiado a cover para ocupar todo */
+    display: block;
+    filter: brightness(1.1) contrast(1.05);
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+/* Efecto hover en imágenes */
+.comprar__monedas > div:hover img {
+    filter: brightness(1.2) contrast(1.1);
+    transform: scale(1.02);
+}
+
+/* Botones de compra */
+.comprar__monedas button {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    border: 1.5px solid white;
+    padding: 12px 40px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    min-width: 180px;
+    text-align: center;
+    letter-spacing: 1px;
+    backdrop-filter: blur(5px);
+}
+
+.comprar__monedas button:hover {
+    background-color: white;
+    color: black;
+    border-color: white;
+    transform: translateX(-50%) scale(1.05);
+}
+
+/* Info adicional sobre la imagen */
+.paquete-info {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+    padding: 0 20px;
+}
+
+.cantidad-monedas {
+    font-size: 28px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.75);
+    display: inline-block;
+    padding: 6px 20px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.precio-etiqueta {
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 8px 20px;
+    border-radius: 6px;
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    margin-top: 5px;
+}
+
+/* Overlay */
+.comprar__monedas > div::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 45%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 20%, transparent 80%);
+    z-index: 1;
+    opacity: 0.85;
+}
+
+.comprar__monedas > div::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75) 10%, transparent 70%);
+    z-index: 1;
+    opacity: 0.8;
+}
+
+/* Estilo para el texto de advertencia - MÁS LARGO Y ELABORADO */
+.comprar > p {
+    color: #888888;
+    font-size: 15px;
+    line-height: 1.8;
+    text-align: justify;
+    padding: 30px 50px;
+    background-color: rgba(10, 10, 10, 0.8);
+    border-radius: 12px;
+    border-left: 4px solid #cc3333;
+    border-right: 1px solid #222222;
+    border-top: 1px solid #222222;
+    border-bottom: 1px solid #222222;
+    margin: 40px auto 0;
+    max-width: 1000px;
+    position: relative;
+    transition: all 0.3s ease;
+    font-style: italic;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.comprar > p:hover {
+    color: #bbbbbb;
+    border-left-color: #b855ff;
+    background-color: rgba(15, 15, 15, 0.85);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Efecto especial para paquete bonus */
+.comprar__monedas__24\.99 {
+    border: 2px solid #ffffff;
+    background-color: #0a0a0a;
+}
+
+.comprar__monedas__24\.99:hover {
+    border-color: #ffffff;
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+}
+
+.comprar__monedas__24\.99 .cantidad-monedas {
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Línea divisoria antes del texto de advertencia */
+.comprar__monedas::after {
+    content: '';
+    display: block;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #333333, transparent);
+    margin: 40px auto 0;
+    max-width: 800px;
+}
+
+/* Estilos responsive */
+@media (max-width: 1200px) {
+    .comprar {
+
+
+    }
+
+    .comprar > p {
+        max-width: 900px;
+        padding: 28px 40px;
+    }
+}
+
+@media (max-width: 992px) {
+    .comprar {
+
+
+        padding: 0 30px;
+    }
+
+    .comprar__monedas {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .comprar > p {
+        max-width: 800px;
+        padding: 25px 35px;
+        font-size: 14.5px;
+    }
+
+    .comprar > p::after {
+        font-size: 13.5px;
+        line-height: 1.6;
+    }
+}
+
+@media (max-width: 768px) {
+    .comprar {
+
+        padding: 0 20px;
+    }
+    
+    .comprar__monedas {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto 40px;
+        gap: 25px;
+    }
+    
+    .comprar h1 {
+        font-size: 28px;
+        padding: 20px 0;
+    }
+    
+    .comprar__monedas > div {
+        height: 360px;
+    }
+    
+    .comprar > p {
+        max-width: 95%;
+        padding: 22px 28px;
+        font-size: 14px;
+        margin-top: 30px;
+        text-align: left;
+    }
+    
+    .comprar > p::before {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+    
+    .comprar > p::after {
+        font-size: 13px;
+        line-height: 1.6;
+        margin-top: 15px;
+        padding-top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .comprar__monedas > div {
+        height: 320px;
+    }
+    
+    .comprar__monedas button {
+        padding: 10px 30px;
+        font-size: 15px;
+        min-width: 160px;
+        bottom: 25px;
+    }
+    
+    .cantidad-monedas {
+        font-size: 24px;
+        padding: 5px 15px;
+    }
+    
+    .precio-etiqueta {
+        font-size: 20px;
+        padding: 6px 15px;
+    }
+    
+    .paquete-info {
+        top: 20px;
+    }
+    
+    .comprar > p {
+        padding: 18px 22px;
+        font-size: 13px;
+        line-height: 1.7;
+    }
+    
+    .comprar > p::before {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    
+    .comprar > p::after {
+        font-size: 12px;
+        line-height: 1.5;
+        margin-top: 12px;
+        padding-top: 12px;
+    }
+}
+
+.comprar span{
+    padding-left: 4px;
+}
+
+.comprar p{
+    margin-bottom: 40px;
+    color: #888;
+}

@@ -1,0 +1,189 @@
+/* =============================================
+   LOGIN / REGISTER CSS
+   Scoped bajo .auth-page para no contaminar app
+   ============================================= */
+
+.auth-page {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.auth-page *,
+.auth-page *::before,
+.auth-page *::after {
+    box-sizing: border-box;
+}
+
+.auth-page .container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* ── Lado izquierdo (imagen decorativa) ── */
+.auth-page .left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #fafafa;
+}
+
+.auth-page .left img {
+    max-width: 100%;
+    max-height: 100vh;
+    object-fit: contain;
+}
+
+/* ── Lado derecho (formulario) ── */
+.auth-page .right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.auth-page #login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* ── Formulario ── */
+.auth-page .login-form {
+    width: 100%;
+    max-width: 440px;
+}
+
+.auth-page .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 4px;
+    width: auto;
+    height: auto;
+}
+
+.auth-page .logo img {
+    width: 90px;
+    height: auto;
+}
+
+.auth-page .titulo {
+    font-size: 70px;
+    background: linear-gradient(90deg, #fc204c, #9c01c0, #1e74f5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Poppins", "Montserrat", sans-serif;
+    line-height: 1;
+}
+
+.auth-page .subtitulo {
+    font-size: 20px;
+    color: rgb(138, 137, 137);
+    padding-bottom: 24px;
+    padding-top: 6px;
+}
+
+.auth-page .login-form .form-label {
+    display: block;
+    padding-bottom: 8px;
+    padding-top: 14px;
+    color: rgb(138, 137, 137);
+    font-size: 14px;
+}
+
+.auth-page .login-form .form-input {
+    padding: 12px 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    border: 1px solid rgba(128, 128, 128, 0.37);
+    width: 100%;
+}
+
+.auth-page .login-form .form-input:focus {
+    border: 2px solid #9c01c0;
+    outline: none;
+}
+
+.auth-page .btn-gradient {
+    margin-top: 28px;
+    padding: 16px;
+    font-size: 14px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #fc204c, #9c01c0, #1e74f5);
+    border: none;
+    color: white;
+    -webkit-text-fill-color: white;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s;
+}
+
+.auth-page .btn-gradient:hover {
+    opacity: 0.88;
+    transform: none;
+    box-shadow: none;
+}
+
+.auth-page .btn-gradient:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.auth-page .href-registrarse {
+    padding-top: 20px;
+    font-size: 14px;
+    color: rgb(138, 137, 137);
+}
+
+/* ── Alertas inline ── */
+.auth-page .form-alert {
+    padding: 13px 18px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    line-height: 1.4;
+    animation: authAlertSlide 0.25s ease;
+}
+
+@keyframes authAlertSlide {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.auth-page .form-alert--error {
+    background: rgba(252, 32, 76, 0.1);
+    border: 1px solid rgba(252, 32, 76, 0.4);
+    color: #fc204c;
+}
+
+.auth-page .form-alert--success {
+    background: rgba(23, 191, 99, 0.1);
+    border: 1px solid rgba(23, 191, 99, 0.4);
+    color: #17bf63;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 992px) {
+    .auth-page .left { display: none; }
+    .auth-page .right { padding: 40px; }
+    .auth-page .login-form { max-width: 450px; }
+    .auth-page .titulo { font-size: 55px; }
+}
+
+@media (max-width: 480px) {
+    .auth-page .right { padding: 24px 20px; }
+    .auth-page .titulo { font-size: 42px; }
+    .auth-page .subtitulo { font-size: 17px; padding-bottom: 16px; }
+    .auth-page .logo img { width: 70px; }
+}

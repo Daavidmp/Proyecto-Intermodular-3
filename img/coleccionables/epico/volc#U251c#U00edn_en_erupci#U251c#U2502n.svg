@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300">
+  <defs><linearGradient id="g" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#1a0000"/><stop offset="100%" stop-color="#3d0000"/></linearGradient></defs>
+  <rect width="800" height="300" fill="url(#g)"/>
+  <polygon points="400,20 200,300 600,300" fill="#4a0000"/>
+  <polygon points="400,20 280,300 520,300" fill="#6b0000"/>
+  <path d="M370 20 Q380 0 400 20 Q400 60 420 80 Q400 100 380 80 Q360 60 370 20Z" fill="#ff4500" opacity="0.9"/>
+  <ellipse cx="400" cy="25" rx="30" ry="15" fill="#ff6600" opacity="0.8"/>
+  <circle cx="350" cy="100" r="8" fill="#ff4500" opacity="0.7"/>
+  <circle cx="440" cy="80" r="6" fill="#ff6600" opacity="0.6"/>
+  <circle cx="310" cy="140" r="5" fill="#ff2200" opacity="0.5"/>
+  <path d="M250 300 Q400 220 550 300Z" fill="#ff3300" opacity="0.4"/>
+  <text x="400" y="270" font-family="serif" font-size="28" fill="#ffaa00" text-anchor="middle" opacity="0.8">Volcán en Erupción</text>
+</svg>

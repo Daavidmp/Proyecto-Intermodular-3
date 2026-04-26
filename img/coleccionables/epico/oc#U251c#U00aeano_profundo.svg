@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300">
+  <defs><linearGradient id="g" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#0077b6"/><stop offset="100%" stop-color="#03045e"/></linearGradient></defs>
+  <rect width="800" height="300" fill="url(#g)"/>
+  <path d="M0 150 Q200 120 400 150 Q600 180 800 150 L800 300 L0 300Z" fill="#023e8a" opacity="0.5"/>
+  <path d="M0 200 Q200 170 400 200 Q600 230 800 200 L800 300 L0 300Z" fill="#03045e" opacity="0.6"/>
+  <circle cx="200" cy="200" r="30" fill="none" stroke="#48cae4" stroke-width="1.5" opacity="0.3"/>
+  <circle cx="200" cy="200" r="50" fill="none" stroke="#48cae4" stroke-width="1" opacity="0.2"/>
+  <circle cx="600" cy="220" r="25" fill="none" stroke="#48cae4" stroke-width="1.5" opacity="0.3"/>
+  <circle cx="400" cy="80" r="8" fill="#90e0ef" opacity="0.6"/>
+  <circle cx="150" cy="60" r="5" fill="#90e0ef" opacity="0.4"/>
+  <circle cx="650" cy="50" r="6" fill="#90e0ef" opacity="0.5"/>
+  <text x="400" y="130" font-family="serif" font-size="34" fill="#90e0ef" text-anchor="middle" opacity="0.85">Océano Profundo</text>
+</svg>
