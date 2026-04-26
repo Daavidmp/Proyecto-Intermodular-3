@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" stop-color="#ff6b35"/><stop offset="50%" stop-color="#f7c59f"/><stop offset="100%" stop-color="#efefd0"/></linearGradient>
+    <radialGradient id="r" cx="50%" cy="60%"><stop offset="0%" stop-color="#fffacd"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+  </defs>
+  <rect width="800" height="300" fill="url(#g)"/>
+  <ellipse cx="400" cy="180" rx="200" ry="150" fill="url(#r)" opacity="0.6"/>
+  <!-- Figura ascendiendo -->
+  <circle cx="400" cy="150" r="18" fill="#fff" opacity="0.9"/>
+  <line x1="400" y1="168" x2="400" y2="220" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+  <line x1="400" y1="185" x2="370" y2="205" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+  <line x1="400" y1="185" x2="430" y2="205" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+  <!-- Rayos de luz -->
+  <line x1="400" y1="60" x2="300" y2="0" stroke="#fffacd" stroke-width="2" opacity="0.4"/>
+  <line x1="400" y1="60" x2="400" y2="0" stroke="#fffacd" stroke-width="3" opacity="0.5"/>
+  <line x1="400" y1="60" x2="500" y2="0" stroke="#fffacd" stroke-width="2" opacity="0.4"/>
+  <line x1="400" y1="60" x2="200" y2="10" stroke="#fffacd" stroke-width="1.5" opacity="0.3"/>
+  <line x1="400" y1="60" x2="600" y2="10" stroke="#fffacd" stroke-width="1.5" opacity="0.3"/>
+  <text x="400" y="280" font-family="serif" font-size="30" fill="#fff" text-anchor="middle" opacity="0.9">Ascensión Divina</text>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300">
+  <defs><linearGradient id="g" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ff9a56"/><stop offset="50%" stop-color="#e07030"/><stop offset="100%" stop-color="#c45a10"/></linearGradient></defs>
+  <rect width="800" height="300" fill="url(#g)"/>
+  <ellipse cx="400" cy="290" rx="400" ry="80" fill="#b84a00" opacity="0.4"/>
+  <polygon points="0,300 80,180 160,300" fill="#a03800" opacity="0.5"/>
+  <polygon points="100,300 200,150 300,300" fill="#b84a00" opacity="0.4"/>
+  <polygon points="500,300 630,130 760,300" fill="#a03800" opacity="0.5"/>
+  <circle cx="400" cy="60" r="45" fill="#ffcc44" opacity="0.9"/>
+  <text x="400" y="170" font-family="serif" font-size="36" fill="#fff5e0" text-anchor="middle" opacity="0.8">Desierto Rojizo</text>
+</svg>

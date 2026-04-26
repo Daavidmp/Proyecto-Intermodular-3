@@ -1,0 +1,455 @@
+/* ============================================
+   CONTENEDOR PRINCIPAL DE LOGROS
+   ============================================ */
+.logros {
+    min-height: 100vh;
+    background-color: #000000;
+    padding: 0 50px;
+    width: 100%;
+    box-sizing: border-box;
+    color: white;
+}
+
+/* Título principal */
+.logros h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 30px 0 40px 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #2f3336;
+    color: white;
+}
+
+/* ============================================
+   ESTADÍSTICAS RESUMEN
+   ============================================ */
+.misiones__stats {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+}
+
+.misiones__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid #2f3336;
+    border-radius: 14px;
+    padding: 18px 28px;
+    min-width: 110px;
+    gap: 4px;
+    transition: background 0.2s;
+}
+
+.misiones__stat:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.misiones__stat__num {
+    font-size: 28px;
+    font-weight: 800;
+    color: white;
+    line-height: 1;
+}
+
+.misiones__stat__label {
+    font-size: 13px;
+    color: #8b8b8b;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Stat pendiente de recoger — resaltado en naranja */
+.misiones__stat--pendiente {
+    border-color: rgba(244, 161, 24, 0.4);
+    background-color: rgba(244, 161, 24, 0.08);
+    animation: pulse__pendiente 2s infinite;
+}
+
+.misiones__stat--pendiente .misiones__stat__num {
+    color: #f4a118;
+}
+
+.misiones__stat--pendiente .misiones__stat__label {
+    color: #f4a118cc;
+}
+
+@keyframes pulse__pendiente {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(244, 161, 24, 0); }
+    50%       { box-shadow: 0 0 0 6px rgba(244, 161, 24, 0.12); }
+}
+
+/* ============================================
+   BADGE DE DIFICULTAD
+   ============================================ */
+.mision__dificultad {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid;
+    margin-bottom: 14px;
+    width: fit-content;
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+/* ============================================
+   RECOMPENSA (moneda + puntos)
+   ============================================ */
+.mision__recompensa {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.mision__recompensa span {
+    font-size: 15px;
+    font-weight: 700;
+    color: #f4a118;
+}
+
+.mision__moneda__icon {
+    width: 20px !important;
+    height: 20px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    object-fit: contain;
+}
+
+/* ============================================
+   BOTONES DE MISIÓN
+   ============================================ */
+.btn__mision {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    border-radius: 50px;
+    padding: 9px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid;
+    white-space: nowrap;
+    margin-top: auto;   /* empuja el botón al fondo de la tarjeta flex */
+    align-self: flex-start;
+}
+
+.btn__mision img {
+    width: 16px !important;
+    height: 16px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+/* Pendiente */
+.btn__mision--pendiente {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #8b8b8b;
+    border-color: #2f3336;
+    cursor: default;
+}
+
+/* Recoger recompensa */
+.btn__mision--recoger {
+    background-color: rgba(244, 161, 24, 0.15);
+    color: #f4a118;
+    border-color: rgba(244, 161, 24, 0.4);
+    animation: pulse__recoger 2s infinite;
+}
+
+.btn__mision--recoger:hover:not(:disabled) {
+    background-color: rgba(244, 161, 24, 0.28);
+    border-color: rgba(244, 161, 24, 0.7);
+    transform: scale(1.03);
+}
+
+@keyframes pulse__recoger {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(244, 161, 24, 0); }
+    50%       { box-shadow: 0 0 0 5px rgba(244, 161, 24, 0.15); }
+}
+
+/* Recompensa ya recogida */
+.btn__mision--recogida {
+    background-color: rgba(23, 191, 99, 0.12);
+    color: #17bf63;
+    border-color: rgba(23, 191, 99, 0.3);
+    cursor: default;
+}
+
+/* ============================================
+   TARJETA - estado "recogida"
+   ============================================ */
+.logros__misiones__mision.recogida {
+    background-color: rgba(23, 191, 99, 0.04);
+    border-color: rgba(23, 191, 99, 0.2);
+}
+
+/* ============================================
+   TOAST DE RECOMPENSA
+   ============================================ */
+.toast__recompensa {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a1a1a;
+    border: 1px solid rgba(23, 191, 99, 0.4);
+    border-radius: 14px;
+    padding: 14px 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    animation: slideUp 0.3s ease;
+    min-width: 280px;
+}
+
+.toast__recompensa img {
+    width: 28px !important;
+    height: 28px !important;
+    padding: 0 !important;
+    background: none !important;
+    border: none !important;
+    margin: 0 !important;
+}
+
+.toast__recompensa strong {
+    display: block;
+    color: #17bf63;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.toast__recompensa p {
+    color: #8b8b8b;
+    font-size: 13px;
+    margin: 2px 0 0 0;
+    font-weight: 400 !important;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ============================================
+   CONTENEDOR DE MISIONES
+   ============================================ */
+.logros__misiones {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+/* ============================================
+   TARJETA DE MISIÓN INDIVIDUAL
+   ============================================ */
+.logros__misiones__mision {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid #2f3336;
+    border-radius: 16px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+    gap: 4px;
+}
+
+.logros__misiones__mision:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: #4a4e52;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Icono de la misión */
+.logros__misiones__mision img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    padding: 12px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Nombre de la misión */
+.logros__misiones__mision p {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: white;
+    line-height: 1.3;
+}
+
+/* Descripción de la misión */
+.logros__misiones__mision a {
+    font-size: 16px;
+    color: #8b8b8b;
+    line-height: 1.5;
+    text-decoration: none;
+    cursor: default;
+    flex-grow: 1;
+    transition: color 0.2s ease;
+}
+
+.logros__misiones__mision a:hover {
+    color: #b0b0b0;
+}
+
+/* ============================================
+   BOTÓN DE COMPLETADO (legacy — sustituido por .btn__mision)
+   ============================================ */
+.logros__misiones button {
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: auto;
+    min-width: 120px;
+}
+
+.logros__misiones button:hover {
+    background-color: rgba(29, 155, 240, 0.25);
+    border-color: rgba(29, 155, 240, 0.5);
+}
+
+/* Estado completado (opcional - para usar con JavaScript) */
+.logros__misiones__mision.completado {
+    background-color: rgba(23, 191, 99, 0.05);
+    border-color: rgba(23, 191, 99, 0.3);
+}
+
+.logros__misiones__mision.completado button {
+    background-color: rgba(23, 191, 99, 0.15);
+    color: #17bf63;
+    border-color: rgba(23, 191, 99, 0.3);
+}
+
+.logros__misiones__mision.completado button:hover {
+    background-color: rgba(23, 191, 99, 0.25);
+    border-color: rgba(23, 191, 99, 0.5);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 1200px) {
+    .logros {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 30px;
+    }
+    
+    .logros__misiones {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
+}
+
+@media (max-width: 992px) {
+    .logros {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .logros__misiones {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .logros {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 20px;
+    }
+
+    .logros h1 {
+        margin-top: 20px;
+        font-size: 28px;
+    }
+
+    .logros__misiones {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logros h1 {
+        font-size: 24px;
+    }
+
+    .logros__misiones__mision {
+        padding: 20px;
+        min-height: 180px;
+    }
+
+    .logros__misiones__mision img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 15px;
+    }
+
+    .logros__misiones__mision p {
+        font-size: 18px;
+    }
+
+    .logros__misiones__mision a {
+        font-size: 14px;
+    }
+
+    .logros__misiones button {
+        padding: 8px 16px;
+        font-size: 14px;
+        min-width: 110px;
+    }
+}
+
+/* ============================================
+   EFECTO PARA MISIONES DESTACADAS (opcional)
+   ============================================ */
+.logros__misiones__mision.destacada {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.logros__misiones__mision.destacada img {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+}
+
+/* ============================================
+   INDICADOR DE PROGRESO (opcional)
+   ============================================ */
+.progreso-mision {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 14px;
+    color: #8b8b8b;
+    font-weight: 500;
+}

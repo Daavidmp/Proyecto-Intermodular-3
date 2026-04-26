@@ -1,0 +1,187 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #000000;
+    color: #e7e9ea;
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.mensajes {
+    min-height: 100vh;
+    background-color: #000000;
+    flex-grow: 1;
+    width: auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.mensajes > p {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 30px 0 40px 0;
+    color: #ffffff;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #2f3336;
+    letter-spacing: -0.5px;
+}
+
+#buscador {
+    width: 100%;
+    margin-top: 35px;
+    padding: 16px 24px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    border: 1px solid #2f3336;
+    border-radius: 30px;
+    color: #e7e9ea;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.2s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+#buscador:focus {
+    border-color: #1d9bf0;
+    background-color: rgba(29, 155, 240, 0.05);
+}
+
+#buscador::placeholder {
+    color: #8b8b8b;
+    font-size: 16px;
+}
+
+.mensajes__usuarios {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    color: #e7e9ea;
+    position: relative;
+    border-bottom: 1px solid #2f3336;
+}
+
+.mensajes__usuarios:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.mensajes__usuarios:active {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.mensajes__usuarios img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+    border: 2px solid #2f3336;
+    background-color: #2f3336;
+    transition: border-color 0.2s ease;
+}
+
+.mensajes__usuarios:hover img {
+    border-color: #1d9bf0;
+}
+
+.mensajes__usuarios p {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    flex-grow: 1;
+    color: #e7e9ea;
+}
+
+/* Indicador de estado */
+.mensajes__usuarios::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #1d9bf0;
+    border: 2px solid #000000;
+    margin-left: 15px;
+}
+
+/* Último mensaje (opcional) */
+.mensajes__usuarios .last-message {
+    position: absolute;
+    right: 20px;
+    font-size: 14px;
+    color: #8b8b8b;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Scrollbar personalizado */
+.mensajes::-webkit-scrollbar {
+    width: 10px;
+}
+
+.mensajes::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+.mensajes::-webkit-scrollbar-thumb {
+    background: #2f3336;
+    border-radius: 5px;
+    border: 2px solid #000000;
+}
+
+.mensajes::-webkit-scrollbar-thumb:hover {
+    background: #4a4e52;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .mensajes {
+        padding: 10px;
+        margin-bottom: 80px;
+    }
+    
+    .mensajes > p {
+        font-size: 28px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .mensajes__usuarios {
+        padding: 14px 10px;
+    }
+}
+
+/* Animación de entrada */
+.mensajes__usuarios {
+    animation: fadeIn 0.3s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mensajes__usuarios:nth-child(1) { animation-delay: 0.1s; }
+.mensajes__usuarios:nth-child(2) { animation-delay: 0.2s; }
+.mensajes__usuarios:nth-child(3) { animation-delay: 0.3s; }
+.mensajes__usuarios:nth-child(4) { animation-delay: 0.4s; }
+.mensajes__usuarios:nth-child(5) { animation-delay: 0.5s; }

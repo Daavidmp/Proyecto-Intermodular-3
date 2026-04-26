@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300">
+  <rect width="800" height="300" fill="#1a1a2e"/>
+  <rect x="0" y="0" width="180" height="300" fill="#16213e"/>
+  <rect x="620" y="0" width="180" height="300" fill="#16213e"/>
+  <rect x="20" y="40" width="40" height="30" fill="#f1c40f" opacity="0.6"/>
+  <rect x="80" y="80" width="40" height="30" fill="#f1c40f" opacity="0.4"/>
+  <rect x="640" y="60" width="40" height="30" fill="#f1c40f" opacity="0.5"/>
+  <rect x="700" y="100" width="40" height="30" fill="#f1c40f" opacity="0.3"/>
+  <ellipse cx="400" cy="300" rx="200" ry="60" fill="#3d5a80" opacity="0.3"/>
+  <line x1="180" y1="0" x2="400" y2="300" stroke="#444" stroke-width="2"/>
+  <line x1="620" y1="0" x2="400" y2="300" stroke="#444" stroke-width="2"/>
+  <text x="400" y="160" font-family="sans-serif" font-size="30" fill="#aaa" text-anchor="middle">Callejón Urbano</text>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300">
+  <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#a8d8ea"/><stop offset="100%" stop-color="#d4e9f7"/></linearGradient></defs>
+  <rect width="800" height="300" fill="url(#g)"/>
+  <path d="M0 200 Q200 160 400 200 Q600 240 800 200 L800 300 L0 300Z" fill="white" opacity="0.3"/>
+  <path d="M0 230 Q200 190 400 230 Q600 270 800 230 L800 300 L0 300Z" fill="white" opacity="0.2"/>
+  <circle cx="120" cy="80" r="50" fill="white" opacity="0.4"/>
+  <circle cx="200" cy="60" r="35" fill="white" opacity="0.35"/>
+  <circle cx="600" cy="70" r="55" fill="white" opacity="0.4"/>
+  <circle cx="680" cy="50" r="30" fill="white" opacity="0.3"/>
+  <text x="400" y="170" font-family="serif" font-size="36" fill="white" text-anchor="middle" opacity="0.7">Viento del Norte</text>
+</svg>

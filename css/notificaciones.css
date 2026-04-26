@@ -1,0 +1,449 @@
+/* ============================================
+   NOTIFICACIONES - MRTN
+   ============================================ */
+
+/* ---- Página de notificaciones ---- */
+.notificaciones {
+    min-height: 100vh;
+    background-color: #000000;
+    padding: 0 50px;
+    width: 100%;
+    box-sizing: border-box;
+    color: white;
+}
+
+.notificaciones h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 30px 0 30px 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #2f3336;
+    color: white;
+}
+
+/* Vacío */
+.notificaciones__vacio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 80px 20px;
+    color: #8b8b8b;
+}
+.notificaciones__vacio img {
+    width: 64px;
+    height: 64px;
+    filter: brightness(0) invert(0.4);
+}
+.notificaciones__vacio p {
+    font-size: 18px;
+}
+
+/* Lista */
+.notificaciones__lista {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Item */
+.notificacion__item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    border-bottom: 1px solid #2f3336;
+    position: relative;
+    transition: background-color 0.2s ease;
+    cursor: default;
+}
+
+.notificacion__item:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+.notificacion__item.no-leida {
+    background-color: rgba(29, 155, 240, 0.04);
+}
+
+/* Punto azul de no leída */
+.notificacion__punto {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #1d9bf0;
+    flex-shrink: 0;
+}
+
+/* Iconos */
+.notificacion__icono {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.notificacion__icono--mision {
+    background: linear-gradient(135deg, rgba(156, 1, 192, 0.2), rgba(252, 32, 76, 0.1));
+    border: 1px solid rgba(156, 1, 192, 0.3);
+}
+
+.notificacion__icono--mision img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+}
+
+.notificacion__icono--mensaje {
+    background: rgba(29, 155, 240, 0.1);
+    border: 1px solid rgba(29, 155, 240, 0.3);
+}
+
+.notificacion__avatar {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.notificacion__icono--mensaje img:not(.notificacion__avatar) {
+    width: 22px;
+    height: 22px;
+    filter: brightness(0) invert(1);
+}
+
+/* Contenido */
+.notificacion__contenido {
+    flex: 1;
+    min-width: 0;
+}
+
+.notificacion__contenido strong {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.notificacion__contenido p {
+    font-size: 14px;
+    color: #8b8b8b;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.notificacion__fecha {
+    font-size: 13px;
+    color: #555;
+    display: block;
+    margin-top: 4px;
+}
+
+/* Botones de acción */
+.notificacion__accion {
+    flex-shrink: 0;
+    margin-right: 24px;
+}
+
+.notif__btn {
+    border: none;
+    border-radius: 50px;
+    padding: 9px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.notif__btn--mision {
+    background: linear-gradient(135deg, rgba(156, 1, 192, 0.2), rgba(252, 32, 76, 0.15));
+    color: #d04ef5;
+    border: 1px solid rgba(156, 1, 192, 0.4);
+}
+
+.notif__btn--mision:hover {
+    background: linear-gradient(135deg, rgba(156, 1, 192, 0.35), rgba(252, 32, 76, 0.25));
+    border-color: rgba(156, 1, 192, 0.6);
+}
+
+.notif__btn--chat {
+    background-color: rgba(29, 155, 240, 0.15);
+    color: #1d9bf0;
+    border: 1px solid rgba(29, 155, 240, 0.35);
+}
+
+.notif__btn--chat:hover {
+    background-color: rgba(29, 155, 240, 0.28);
+    border-color: rgba(29, 155, 240, 0.55);
+}
+
+/* ============================================
+   BADGE EN SIDEBAR
+   ============================================ */
+.notif__wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notif__badge {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    background: linear-gradient(135deg, #fc204c, #9c01c0);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    box-shadow: 0 0 0 2px #000;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: scale(1);
+}
+
+.notif__badge--hidden {
+    opacity: 0;
+    transform: scale(0);
+    pointer-events: none;
+}
+
+/* ============================================
+   MISIONES - AÑADIDOS
+   ============================================ */
+
+/* Stats */
+.misiones__stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+}
+
+.misiones__stat {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid #2f3336;
+    border-radius: 12px;
+    padding: 16px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-width: 100px;
+}
+
+.misiones__stat--pendiente {
+    border-color: rgba(244, 161, 24, 0.4);
+    background: rgba(244, 161, 24, 0.07);
+}
+
+.misiones__stat__num {
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+}
+
+.misiones__stat__label {
+    font-size: 13px;
+    color: #8b8b8b;
+}
+
+/* Dificultad badge */
+.mision__dificultad {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid;
+    margin-bottom: 12px;
+    align-self: flex-start;
+}
+
+/* Recompensa en la tarjeta */
+.mision__recompensa {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+    padding-top: 12px;
+    margin-bottom: 12px;
+}
+
+.mision__recompensa img.mision__moneda__icon {
+    width: 18px;
+    height: 18px;
+    filter: none;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mision__recompensa span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #f4a118;
+}
+
+/* Botones de misión */
+.btn__mision {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid;
+    width: 100%;
+    margin-top: 4px;
+}
+
+.btn__mision img {
+    width: 16px !important;
+    height: 16px !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    filter: none !important;
+}
+
+.btn__mision--recoger {
+    background: linear-gradient(135deg, rgba(244,161,24,0.2), rgba(244,161,24,0.1));
+    color: #f4a118;
+    border-color: rgba(244,161,24,0.4);
+    animation: pulso__recoger 2s ease-in-out infinite;
+}
+
+.btn__mision--recoger:hover {
+    background: linear-gradient(135deg, rgba(244,161,24,0.35), rgba(244,161,24,0.2));
+    border-color: rgba(244,161,24,0.65);
+    transform: translateY(-1px);
+}
+
+@keyframes pulso__recoger {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(244,161,24,0.4); }
+    50%       { box-shadow: 0 0 0 6px rgba(244,161,24,0); }
+}
+
+.btn__mision--recogida {
+    background: rgba(23, 191, 99, 0.08);
+    color: #17bf63;
+    border-color: rgba(23, 191, 99, 0.25);
+    cursor: not-allowed;
+    opacity: 0.75;
+}
+
+.btn__mision--pendiente {
+    background: rgba(255, 255, 255, 0.04);
+    color: #555;
+    border-color: #2f3336;
+    cursor: not-allowed;
+}
+
+/* Estado recogida en card */
+.logros__misiones__mision.recogida {
+    background-color: rgba(23, 191, 99, 0.04);
+    border-color: rgba(23, 191, 99, 0.2);
+}
+
+/* ============================================
+   TOAST DE RECOMPENSA
+   ============================================ */
+.toast__recompensa {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #1a1a1a, #111);
+    border: 1px solid rgba(244,161,24,0.4);
+    border-radius: 16px;
+    padding: 16px 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    z-index: 9999;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    animation: toast__in 0.35s ease;
+    max-width: 320px;
+}
+
+.toast__recompensa > img {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+}
+
+.toast__recompensa strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    color: #f4a118;
+    margin-bottom: 3px;
+}
+
+.toast__recompensa p {
+    font-size: 13px;
+    color: #8b8b8b;
+    margin: 0;
+}
+
+@keyframes toast__in {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .notificaciones {
+        padding: 0 20px;
+    }
+    .notificacion__item {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .notificacion__accion {
+        margin-right: 0;
+        width: 100%;
+    }
+    .notif__btn {
+        width: 100%;
+        text-align: center;
+    }
+    .toast__recompensa {
+        bottom: 80px;
+        right: 15px;
+        left: 15px;
+        max-width: none;
+    }
+    .misiones__stats {
+        gap: 10px;
+    }
+}
